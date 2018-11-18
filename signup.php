@@ -64,6 +64,7 @@
     ?>
     <form action="includes/signup.inc.php" method='post' id="contact-form" enctype="multipart/form-data">
 
+        <em style="color: blue;">NOTE: Username cannot be changed later</em>
         <input type="text" id="name" name="uid" placeholder="Username" value=<?php echo $userName; ?>>
         <input type="email" id="email" name="mail" placeholder="email" value=<?php echo $email; ?>>
         <input type="password" id="pwd" name="pwd" placeholder="password">

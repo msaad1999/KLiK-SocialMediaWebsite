@@ -25,6 +25,10 @@
                             slug => "edit-profile.php",
                             title => "Edit Profile"
                         ),
+                        array(
+                            slug => "categories.php",
+                            title => "Forums"
+                        ),
                     );
     
     // Team Members

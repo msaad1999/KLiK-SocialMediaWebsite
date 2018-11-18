@@ -16,6 +16,8 @@
 
 <html>
     <head>
+        <meta name="description" content="An Information Pool System" />
+        <meta name="keywords" content="put, keywords, here" />
         <title><?php echo TITLE; ?></title>
         <link href="includes/styles.css" rel="stylesheet"> 
         <link rel="shortcut icon" href="img/logo.ico" />
@@ -38,7 +40,7 @@
                     <input type="submit" class="button next login" name="logout-submit" value="Logout">
                 </form>';
                 
-                echo '<h5 class="open"> you are logged in</h5><br>';
+                echo '<h5 class="open"> *You are logged in</h5><br>';
             }
             else
             {
@@ -72,7 +74,7 @@
                 </form>
                 <a href="signup.php" class="button previous">Signup</a>';
                 
-                echo '<p class="closed"> you are logged out</p>';
+                echo '<p class="closed"> *You are logged out</p>';
                 
             }
         ?>
