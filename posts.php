@@ -43,7 +43,10 @@
 
 <?php
 
-    $sql = "select * from posts where post_topic=?;";
+    $sql = "select * from posts p, users u "
+            . "where p.post_topic=? "
+            . "and p.post_by=u.idUsers "
+            . "order by p.post_id;";
     $stmt = mysqli_stmt_init($conn);    
     
     if (!mysqli_stmt_prepare($stmt, $sql))
@@ -58,6 +61,8 @@
         $result = mysqli_stmt_get_result($stmt);
         
         echo "<table>"
+                ."<col width='25%'>"
+                ."<col width='75%'>"
                 . "<thead>"
                     . "<tr>"
                         . "<th colspan='2' style='text-align: center'>".$title."</th>"
@@ -69,7 +74,8 @@
         {
             echo "<tr>"
                     . "<td>"
-                        //. "<img id='userDp' src=./uploads/".$_SESSION['userImg'].">"
+                        . "<img id='userTh' src=./uploads/".$row['userImg'].">"
+                        . "<p>".$row['uidUsers']."<br>"
                         . "<p>".$row['post_date']."</p>"
                     . "</td>"
                     . "<td>"

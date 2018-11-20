@@ -173,7 +173,7 @@ table {
 }
 
 table td {
-	border-bottom: solid 1px #d1cbb8;
+	border-bottom: solid 1px #d1cbb8; 
 	padding: 4px;
 }
 
@@ -477,6 +477,15 @@ input.button.next {
     width: 150px;
     height: 150px;
 }
+
+#userTh {
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+
 
 
 /* ---------------------- */
