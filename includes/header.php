@@ -35,7 +35,7 @@
             {
                 echo'<img id="userDp" src=./uploads/'.$_SESSION["userImg"].'>
                 <h3>' . strtoupper($_SESSION['userUid']) . '</h3>
-                <a href="profile.php" class="button login">My Profile</a>
+                <a href="profile.php" class="button next login">My Profile</a>
                 <form method="post" action="includes/logout.inc.php" id="login-form">
                     <input type="submit" class="button next login" name="logout-submit" value="Logout">
                 </form>';
@@ -59,7 +59,8 @@
                     }
                     else if ($_GET['error'] == 'wrongpwd')
                     {
-                        echo '<p class="closed">*wrong password</p>';
+                        echo '<p class="closed">*wrong password</p>'
+                        . '<a href="reset-pwd.php" class="closed">Forgot your password?</a>';
                     }
                     else if ($_GET['error'] == 'sqlerror')
                     {

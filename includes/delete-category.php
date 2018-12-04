@@ -1,0 +1,37 @@
+<?php
+
+session_start();
+
+if (isset($_GET['id']) && isset($_SESSION['userId']) && ($_SESSION['userLevel'] == 1))
+{
+    
+    require 'dbh.inc.php';
+    
+    $category = $_GET['id'];
+    
+    $sql = "delete from categories where cat_id=?";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql))
+    {
+        header("Location: ../categories.php?error=sqlerror");
+        exit();
+    }
+    else
+    {
+        mysqli_stmt_bind_param($stmt, "s", $category);
+        mysqli_stmt_execute($stmt);
+        header("Location: ../categories.php");
+        exit();
+    }
+    
+    
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+    
+}
+
+else
+{
+    header("Location: ../categories.php");
+    exit();
+}

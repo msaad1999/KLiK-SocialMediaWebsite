@@ -43,7 +43,7 @@
         {
             echo "<tr>"
                     . "<td>"
-                        . "<a href='posts.php?topic=".$row['topic_id']."&title=".$row['topic_subject']."'>"
+                        . "<a href='posts.php?topic=".$row['topic_id']."'>"
                         . "<p>".$row['topic_subject']."</p></a>"
                     . "</td>"
                     . "<td>"

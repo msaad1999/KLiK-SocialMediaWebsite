@@ -1,6 +1,8 @@
 <?php
 
-if (isset($_POST['create-cat']))
+session_start();
+
+if (isset($_POST['create-cat']) && ($_SESSION['userLevel'] == 1))
 {
     
     require 'dbh.inc.php';
@@ -67,6 +69,6 @@ if (isset($_POST['create-cat']))
 
 else
 {
-    header("Location: ../index.php");
+    header("Location: ../create-category.php?");
     exit();
 }

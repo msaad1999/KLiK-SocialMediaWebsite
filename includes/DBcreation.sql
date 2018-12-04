@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Nov 20, 2018 at 09:05 AM
+-- Generation Time: Dec 03, 2018 at 07:28 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.1.23
 
@@ -24,9 +24,6 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
-create schema loginsystem;
-use loginsystem;
-
 --
 -- Table structure for table `categories`
 --
@@ -42,15 +39,9 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`cat_id`, `cat_name`, `cat_description`) VALUES
-(1, 'category 1', 'this is a test category'),
-(2, 'category 2', 'this is another test category'),
-(3, 'computer', 'this is a category related to computer sciences fields and related questions as well as a discussion forum'),
 (4, 'finance sciences', 'all topics related to finance and economy like making double decker chocolate cake and how to end the world in 3 days'),
 (5, 'gardening', 'different gardening techniques used to torture helpless victims and make them dream of attending horrible opera performances'),
-(6, 'a', 'aa'),
-(7, 'hooooola', 'yea hoooooooooooooooo'),
-(8, 'business', 'as das da'),
-(9, 'dalla business', 'soora hi soora');
+(8, 'sad', 'sadsadsadsad');
 
 -- --------------------------------------------------------
 
@@ -63,15 +54,16 @@ CREATE TABLE `polls` (
   `subject` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
-  `status` enum('1','0') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '1'
+  `status` enum('1','0') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `created_by` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `polls`
 --
 
-INSERT INTO `polls` (`id`, `subject`, `created`, `modified`, `status`) VALUES
-(1, 'Which is Your Favorite Website for PHP Programming?', '2016-11-07 04:13:13', '2016-11-07 04:13:13', '1');
+INSERT INTO `polls` (`id`, `subject`, `created`, `modified`, `status`, `created_by`) VALUES
+(1, 'Which is Your Favorite Website for PHP Programming?', '2016-11-07 04:13:13', '2016-11-07 04:13:13', '1', 24);
 
 -- --------------------------------------------------------
 
@@ -130,19 +122,88 @@ CREATE TABLE `posts` (
   `post_content` text NOT NULL,
   `post_date` datetime NOT NULL,
   `post_topic` int(8) NOT NULL,
-  `post_by` int(8) NOT NULL
+  `post_by` int(8) NOT NULL,
+  `post_votes` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `posts`
 --
 
-INSERT INTO `posts` (`post_id`, `post_content`, `post_date`, `post_topic`, `post_by`) VALUES
-(82, 'qqqqq', '2018-11-19 16:03:59', 31, 26),
-(83, 'qqqqq', '2018-11-19 16:05:30', 31, 26),
-(84, 'go away', '2018-11-19 16:06:36', 31, 24),
-(85, 'fuck off', '2018-11-19 16:07:03', 31, 25),
-(86, 'yo wtf u niggas doing?\r\n', '2018-11-19 19:59:17', 31, 27);
+INSERT INTO `posts` (`post_id`, `post_content`, `post_date`, `post_topic`, `post_by`, `post_votes`) VALUES
+(82, 'qqqqq', '2018-11-19 16:03:59', 31, 26, 0),
+(83, 'qqqqq', '2018-11-19 16:05:30', 31, 26, 0),
+(84, 'go away', '2018-11-19 16:06:36', 31, 24, 0),
+(85, 'fuck off', '2018-11-19 16:07:03', 31, 25, 0),
+(86, 'yo wtf u niggas doing?\r\n', '2018-11-19 19:59:17', 31, 27, 0),
+(87, 'im bored tf am i supposed to do?', '2018-11-21 16:04:52', 35, 25, 0),
+(89, ' hj bjhb hj nj b j njn jjnsgjnfj ngjf ngjf ngjfn gdjf ngdjn gfdngjdn gjdfng djf gjdfn gjdjf gjd gjdf ngjdn fgjndjf gjdf ngjd fngjndfjg djf gjdf gjdfjgndjfnd gjdnfgjdfj gdjf gjdf gjdfjg dj gjd gjdjg jd gjdjg ndj gjdfn gjdnfj gndjf ngjd n', '2018-11-21 16:06:35', 31, 25, 0),
+(92, 'a', '2018-11-23 20:08:11', 31, 25, 0),
+(94, 'chup kar gashti', '2018-11-28 18:02:58', 31, 29, 0),
+(95, 'ami g ami g\r\n', '2018-11-30 14:19:52', 31, 29, 0),
+(98, 'a', '2018-12-01 21:06:57', 31, 27, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `postvotes`
+--
+
+CREATE TABLE `postvotes` (
+  `voteId` int(11) NOT NULL,
+  `votePost` int(11) NOT NULL,
+  `voteBy` int(11) NOT NULL,
+  `voteDate` date NOT NULL,
+  `vote` int(11) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Triggers `postvotes`
+--
+DELIMITER $$
+CREATE TRIGGER `calc_votes_after_delete` AFTER DELETE ON `postvotes` FOR EACH ROW BEGIN
+
+		update posts
+        set posts.post_votes = posts.post_votes - old.vote
+        where posts.post_id = old.votePost;	
+
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `calc_votes_after_insert` AFTER INSERT ON `postvotes` FOR EACH ROW BEGIN
+	
+	update posts
+        set posts.post_votes = posts.post_votes + new.vote
+        where posts.post_id = new.votePost;	
+		
+    END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `calc_votes_after_update` AFTER UPDATE ON `postvotes` FOR EACH ROW BEGIN
+	
+		update posts
+        set posts.post_votes = posts.post_votes + (new.vote * 2)
+        where posts.post_id = new.votePost;	
+		
+    END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pwdreset`
+--
+
+CREATE TABLE `pwdreset` (
+  `pwdResetId` int(11) NOT NULL,
+  `pwdResetEmail` text NOT NULL,
+  `pwdResetSelector` text NOT NULL,
+  `pwdResetToken` longtext NOT NULL,
+  `pwdResetExpires` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -163,12 +224,9 @@ CREATE TABLE `topics` (
 --
 
 INSERT INTO `topics` (`topic_id`, `topic_subject`, `topic_date`, `topic_cat`, `topic_by`) VALUES
-(29, 'testint testing123', '2018-11-18 10:46:58', 6, 24),
-(30, 'aaaaaaa', '2018-11-18 10:48:26', 6, 24),
 (31, 'how to plant a nuclear bomb', '2018-11-18 11:13:00', 5, 24),
 (32, 'a', '2018-11-18 11:22:59', 5, 24),
-(33, 'aaaa', '2018-11-18 11:29:41', 1, 24),
-(34, 'go die', '2018-11-18 15:41:18', 2, 24);
+(35, 'lol', '2018-11-21 16:04:52', 5, 25);
 
 -- --------------------------------------------------------
 
@@ -195,10 +253,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`idUsers`, `userLevel`, `f_name`, `l_name`, `uidUsers`, `emailUsers`, `pwdUsers`, `gender`, `headline`, `bio`, `userImg`) VALUES
-(24, 1, 'Muhammad', 'Saad', 'saad', 'saad@test.com', '$2y$10$vvdlB7AP99fc2kJx.zxnm.neZuNfadqoNwI.RveluFB1TFtsGlasG', 'm', '', '', '5bf28389afc785.73389325.jpg'),
+(24, 1, 'Muhammad', 'Saad', 'saad', 'muhammadsaad.crytek@gmail.com', '$2y$10$I3QAikKl.SLTiFIrfmjkye.9QVA13.s5SdbRkU2YpicQb9hFcd2fi', 'm', '', '', '5bf28389afc785.73389325.jpg'),
 (25, 0, '', '', 'a', 'a@a.a', '$2y$10$RiiU91TqjjVhPdVpypQBtuq0etClplrZ3HNTLPFrUheJ.sy7ZifwK', 'f', '', '', '5bf28f767563d4.32287587.jpg'),
 (26, 0, '', '', 'bund99', 'aaa@gmail.com', '$2y$10$zXwVteLyKxjwSMDk.a8/HeoYzmfFInzvftURiCyt27z03mgbdkSNy', 'm', '', '', '5bf29332bccab4.46279007.jpg'),
-(27, 0, '', '', 'asd', 'asd@asd.asd', '$2y$10$S4X2HZUWyQXV7zLwirj2dOBVEbDHFDhsX6y91asglNa6QBnlq9ik.', 'f', '', '', '5bf2ebf077fb14.69408796.gif');
+(27, 0, '', '', 'asd', 'asd@asd.asd', '$2y$10$S4X2HZUWyQXV7zLwirj2dOBVEbDHFDhsX6y91asglNa6QBnlq9ik.', 'f', '', '', '5bf2ebf077fb14.69408796.gif'),
+(28, 0, '', '', 'ss', 'sss@sss.sss', '$2y$10$.tRJsqYHvJKcwQSw10T7TuKFhZqlbvO/NXE0joJADooqh7Cs6bBOm', 'm', '', '', '5bfe86d11f7813.41424258.jpg'),
+(29, 0, '', '', 'ait', 'anas.tasadduq@gmail.com', '$2y$10$j5scT2dgJuZGBBYBFRsKVe.n50dLCjdYvcpY1Vy1.jES8f6ojulAi', 'm', '', '', '5c03ad0de59709.45156405.jpg');
 
 --
 -- Indexes for dumped tables
@@ -215,7 +275,8 @@ ALTER TABLE `categories`
 -- Indexes for table `polls`
 --
 ALTER TABLE `polls`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `created_by` (`created_by`);
 
 --
 -- Indexes for table `poll_options`
@@ -241,6 +302,19 @@ ALTER TABLE `posts`
   ADD KEY `post_by` (`post_by`);
 
 --
+-- Indexes for table `postvotes`
+--
+ALTER TABLE `postvotes`
+  ADD PRIMARY KEY (`voteId`),
+  ADD KEY `voteBy` (`voteBy`);
+
+--
+-- Indexes for table `pwdreset`
+--
+ALTER TABLE `pwdreset`
+  ADD PRIMARY KEY (`pwdResetId`);
+
+--
 -- Indexes for table `topics`
 --
 ALTER TABLE `topics`
@@ -262,7 +336,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `cat_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `cat_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `polls`
@@ -286,23 +360,41 @@ ALTER TABLE `poll_votes`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `post_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+
+--
+-- AUTO_INCREMENT for table `postvotes`
+--
+ALTER TABLE `postvotes`
+  MODIFY `voteId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pwdreset`
+--
+ALTER TABLE `pwdreset`
+  MODIFY `pwdResetId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `topics`
 --
 ALTER TABLE `topics`
-  MODIFY `topic_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `topic_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `idUsers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `idUsers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `polls`
+--
+ALTER TABLE `polls`
+  ADD CONSTRAINT `polls_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `users` (`idUsers`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `poll_options`
@@ -323,6 +415,12 @@ ALTER TABLE `poll_votes`
 ALTER TABLE `posts`
   ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`post_topic`) REFERENCES `topics` (`topic_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `posts_ibfk_2` FOREIGN KEY (`post_by`) REFERENCES `users` (`idUsers`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `postvotes`
+--
+ALTER TABLE `postvotes`
+  ADD CONSTRAINT `postvotes_ibfk_1` FOREIGN KEY (`voteBy`) REFERENCES `users` (`idUsers`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `topics`

@@ -2,10 +2,9 @@
     define('TITLE',"Forum | Franklin's Fine Dining");
     include 'includes/header.php';
     
-    if (isset($_GET['topic']) && isset($_GET['title']))
+    if (isset($_GET['topic']))
     {
         $topic = strip_bad_chars($_GET['topic']);
-        $title = $_GET['title'];
     }
 ?>
 
@@ -39,9 +38,33 @@
 
 
 <hr>
-<h1>Post</h1>
 
 <?php
+
+    $sql = "select * from topics where topic_id=?";
+    $stmt = mysqli_stmt_init($conn);
+    
+    if (!mysqli_stmt_prepare($stmt, $sql))
+    {
+        echo "sql error";
+        exit();
+    }
+    else
+    {
+        mysqli_stmt_bind_param($stmt, "s", $topic);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        
+        if (!($row = mysqli_fetch_assoc($result)))
+        {
+            echo 'You need to re-submit your reset request';
+            exit();
+        }
+        else 
+        {
+            $title = strtoupper($row['topic_subject']);
+        }
+    }
 
     $sql = "select * from posts p, users u "
             . "where p.post_topic=? "
@@ -65,13 +88,65 @@
                 ."<col width='75%'>"
                 . "<thead>"
                     . "<tr>"
-                        . "<th colspan='2' style='text-align: center'>".$title."</th>"
+                        . "<th colspan='4' style='text-align: center'>".$title."</th>"
                     . "</tr>"
                 . "</thead>"
                 . "<tbody>";
         
         while ($row = mysqli_fetch_assoc($result))
         {
+            
+        $voted_u = false;
+        $voted_d = false;
+        
+        $sql = "select votePost, voteBy, vote from postvotes "
+            . "where votePost=? "
+            . "and voteBy=? "
+            . "and vote=1";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql))
+        {
+            header("Location: ../posts.php?topic=".$topic."&error=sqlerror");
+            exit();
+        }
+        else
+        {
+            mysqli_stmt_bind_param($stmt, "ss", $row['post_id'], $_SESSION['userId']);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_store_result($stmt);
+            
+            $resultCheck = mysqli_stmt_num_rows($stmt);
+            
+            if ($resultCheck == 0)
+            {
+                $voted_u = true;
+            }
+        }
+        
+        $sql = "select votePost, voteBy, vote from postvotes "
+            . "where votePost=? "
+            . "and voteBy=? "
+            . "and vote=-1";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql))
+        {
+            header("Location: ../posts.php?topic=".$topic."&error=sqlerror");
+            exit();
+        }
+        else
+        {
+            mysqli_stmt_bind_param($stmt, "ss", $row['post_id'], $_SESSION['userId']);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_store_result($stmt);
+            
+            $resultCheck = mysqli_stmt_num_rows($stmt);
+            
+            if ($resultCheck == 0)
+            {
+                $voted_d = true;
+            }
+        }
+            
             echo "<tr>"
                     . "<td>"
                         . "<img id='userTh' src=./uploads/".$row['userImg'].">"
@@ -80,8 +155,33 @@
                     . "</td>"
                     . "<td>"
                         . "<p>".$row['post_content']."</p>"
-                    . "</td>"
-                . "</tr>";;
+                    . "</td><td>"
+                    . "<a ";
+            
+            if ($voted_u)
+            {
+                echo "href='includes/post-vote.inc.php?topic=".$topic."&post=".$row['post_id'].""
+                    . "&vote=1' ";
+            }
+            
+            echo "class='button previous'>Upvote</a><br>"
+                    . $row['post_votes'] . "<br>"
+                    . "<a ";
+            
+            if ($voted_d)
+            {
+                echo "href='includes/post-vote.inc.php?topic=".$topic."&post=".$row['post_id'].""
+                    . "&vote=-1' ";
+            }
+            
+            echo "class='button previous'>Downvote</a><br>";
+            
+            if ( ($row['post_by']==$_SESSION['userId']) || ($_SESSION['userLevel'] == 1))
+            {
+                echo "<a href='includes/delete-post.php?topic=".$topic."&post=".$row['post_id']."&by=".$row['post_by']."'"
+                        . " class='button next'>Delete</a>";
+            }
+            echo "</td></tr>";
         }
         
         echo "</tbody> </table>";
@@ -116,8 +216,7 @@
     </form>
 </div>
 
-<!-- <a href="./create-topic.php" class="button previous">Create Topic</a><br>   
-<a href="./categories.php" class="button previous">View Categories</a> -->
+
 <hr>
 
 <?php include 'includes/footer.php'; ?>
