@@ -9,7 +9,7 @@
 ?>
 
 <hr>
-<h1>Topics</h1>
+<h1>Forums</h1>
 
 <?php
 
@@ -33,7 +33,7 @@
         echo "<table>"
                 . "<thead>"
                     . "<tr>"
-                        . "<th>Topic Name</th>"
+                        . "<th>Forum</th>"
                         . "<th>Time Created</th>"
                     . "</tr>"
                 . "</thead>"
@@ -57,8 +57,8 @@
 
 ?>
 
-<a href="./create-topic.php" class="button previous">Create Topic</a><br>   
-<a href="./categories.php" class="button previous">View Categories</a>
+<a href="./create-topic.php" class="button previous">Create a Forum</a><br>   
+<a href="./categories.php" class="button previous">View Forum Categories</a>
 <hr>
 
 <?php include 'includes/footer.php'; ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3307
--- Generation Time: Dec 03, 2018 at 07:28 PM
+-- Generation Time: Dec 06, 2018 at 09:26 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.1.23
 
@@ -21,6 +21,9 @@ SET time_zone = "+00:00";
 --
 -- Database: `loginsystem`
 --
+
+create schema loginsystem;
+use loginsystem;
 
 -- --------------------------------------------------------
 
@@ -55,15 +58,19 @@ CREATE TABLE `polls` (
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL,
   `status` enum('1','0') CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
-  `created_by` int(11) NOT NULL
+  `created_by` int(11) NOT NULL,
+  `poll_desc` varchar(5000) NOT NULL,
+  `locked` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `polls`
 --
 
-INSERT INTO `polls` (`id`, `subject`, `created`, `modified`, `status`, `created_by`) VALUES
-(1, 'Which is Your Favorite Website for PHP Programming?', '2016-11-07 04:13:13', '2016-11-07 04:13:13', '1', 24);
+INSERT INTO `polls` (`id`, `subject`, `created`, `modified`, `status`, `created_by`, `poll_desc`, `locked`) VALUES
+(12, 'killing', '2018-12-04 20:27:26', '2018-12-04 20:27:26', '1', 24, '', 1),
+(14, 'How to kill Linear Algebra', '2018-12-05 22:38:43', '2018-12-05 22:38:43', '1', 24, 'linear algebra has caused more deaths then eating pizza with pepsi in the last 69 years', 0),
+(15, 'how to eat water', '2018-12-05 23:02:28', '2018-12-05 23:02:28', '1', 24, 'pls pls help me i dying of hunger i need a cigarette asap ', 1);
 
 -- --------------------------------------------------------
 
@@ -85,11 +92,17 @@ CREATE TABLE `poll_options` (
 --
 
 INSERT INTO `poll_options` (`id`, `poll_id`, `name`, `created`, `modified`, `status`) VALUES
-(1, 1, 'CodexWorld', '2016-11-07 11:29:31', '2016-11-07 11:29:31', '1'),
-(2, 1, 'SitePoint', '2016-11-07 11:29:31', '2016-11-07 11:29:31', '1'),
-(3, 1, 'Envato Tuts+', '2016-11-07 11:29:31', '2016-11-07 11:29:31', '1'),
-(4, 1, 'Others', '2016-11-08 08:20:25', '2016-11-08 08:20:25', '1'),
-(5, 1, 'test option', '2018-11-20 13:12:16', '2018-11-20 13:12:16', '1');
+(7, 12, 'gun', '2018-12-04 20:27:26', '2018-12-04 20:27:26', '1'),
+(8, 12, 'opera', '2018-12-04 20:27:26', '2018-12-04 20:27:26', '1'),
+(9, 12, 'poison', '2018-12-04 20:27:26', '2018-12-04 20:27:26', '1'),
+(10, 12, 'algebra', '2018-12-04 20:27:26', '2018-12-04 20:27:26', '1'),
+(18, 14, 'kill the teacher', '2018-12-05 22:38:43', '2018-12-05 22:38:43', '1'),
+(19, 14, 'kill the creator', '2018-12-05 22:38:43', '2018-12-05 22:38:43', '1'),
+(20, 14, 'kill everyone', '2018-12-05 22:38:43', '2018-12-05 22:38:43', '1'),
+(21, 14, 'kill yourself', '2018-12-05 22:38:43', '2018-12-05 22:38:43', '1'),
+(22, 14, 'how about a cup of tea?', '2018-12-05 22:38:43', '2018-12-05 22:38:43', '1'),
+(26, 15, 'just eat it wtf', '2018-12-05 23:02:29', '2018-12-05 23:02:29', '1'),
+(27, 15, 'go to hell', '2018-12-05 23:02:29', '2018-12-05 23:02:29', '1');
 
 -- --------------------------------------------------------
 
@@ -101,15 +114,21 @@ CREATE TABLE `poll_votes` (
   `id` int(11) NOT NULL,
   `poll_id` int(11) NOT NULL,
   `poll_option_id` int(11) NOT NULL,
-  `vote_count` bigint(10) NOT NULL
+  `vote_by` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `poll_votes`
 --
 
-INSERT INTO `poll_votes` (`id`, `poll_id`, `poll_option_id`, `vote_count`) VALUES
-(5, 1, 1, 1);
+INSERT INTO `poll_votes` (`id`, `poll_id`, `poll_option_id`, `vote_by`) VALUES
+(6, 12, 7, 24),
+(8, 12, 10, 25),
+(11, 12, 10, 27),
+(13, 14, 20, 27),
+(14, 14, 20, 25),
+(19, 15, 26, 24),
+(20, 14, 19, 24);
 
 -- --------------------------------------------------------
 
@@ -205,6 +224,13 @@ CREATE TABLE `pwdreset` (
   `pwdResetExpires` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Dumping data for table `pwdreset`
+--
+
+INSERT INTO `pwdreset` (`pwdResetId`, `pwdResetEmail`, `pwdResetSelector`, `pwdResetToken`, `pwdResetExpires`) VALUES
+(1, 'owaisrehman110@gmail.com', '73abf7a3e5e48bce', '$2y$10$9ytyvfXk8gb8gRzVfRglwevJBy6o46WDrp2ncNj58Y8sjWM4iNSTi', '1543912151');
+
 -- --------------------------------------------------------
 
 --
@@ -258,7 +284,8 @@ INSERT INTO `users` (`idUsers`, `userLevel`, `f_name`, `l_name`, `uidUsers`, `em
 (26, 0, '', '', 'bund99', 'aaa@gmail.com', '$2y$10$zXwVteLyKxjwSMDk.a8/HeoYzmfFInzvftURiCyt27z03mgbdkSNy', 'm', '', '', '5bf29332bccab4.46279007.jpg'),
 (27, 0, '', '', 'asd', 'asd@asd.asd', '$2y$10$S4X2HZUWyQXV7zLwirj2dOBVEbDHFDhsX6y91asglNa6QBnlq9ik.', 'f', '', '', '5bf2ebf077fb14.69408796.gif'),
 (28, 0, '', '', 'ss', 'sss@sss.sss', '$2y$10$.tRJsqYHvJKcwQSw10T7TuKFhZqlbvO/NXE0joJADooqh7Cs6bBOm', 'm', '', '', '5bfe86d11f7813.41424258.jpg'),
-(29, 0, '', '', 'ait', 'anas.tasadduq@gmail.com', '$2y$10$j5scT2dgJuZGBBYBFRsKVe.n50dLCjdYvcpY1Vy1.jES8f6ojulAi', 'm', '', '', '5c03ad0de59709.45156405.jpg');
+(29, 0, '', '', 'ait', 'anas.tasadduq@gmail.com', '$2y$10$j5scT2dgJuZGBBYBFRsKVe.n50dLCjdYvcpY1Vy1.jES8f6ojulAi', 'm', '', '', '5c03ad0de59709.45156405.jpg'),
+(30, 0, '', '', 'Owais', 'owaisrehman110@gmail.com', '$2y$10$EM.p1ed./gfrenQRn5Je1etujHptdTebKy8fgDU0de1wGqQvOOCcK', 'm', '', '', 'default.png');
 
 --
 -- Indexes for dumped tables
@@ -291,7 +318,8 @@ ALTER TABLE `poll_options`
 ALTER TABLE `poll_votes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `poll_id` (`poll_id`),
-  ADD KEY `poll_option_id` (`poll_option_id`);
+  ADD KEY `poll_option_id` (`poll_option_id`),
+  ADD KEY `vote_by` (`vote_by`);
 
 --
 -- Indexes for table `posts`
@@ -342,19 +370,19 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `polls`
 --
 ALTER TABLE `polls`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `poll_options`
 --
 ALTER TABLE `poll_options`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `poll_votes`
 --
 ALTER TABLE `poll_votes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -372,7 +400,7 @@ ALTER TABLE `postvotes`
 -- AUTO_INCREMENT for table `pwdreset`
 --
 ALTER TABLE `pwdreset`
-  MODIFY `pwdResetId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `pwdResetId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `topics`
@@ -384,7 +412,7 @@ ALTER TABLE `topics`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `idUsers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `idUsers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Constraints for dumped tables
@@ -407,7 +435,8 @@ ALTER TABLE `poll_options`
 --
 ALTER TABLE `poll_votes`
   ADD CONSTRAINT `poll_votes_ibfk_1` FOREIGN KEY (`poll_id`) REFERENCES `polls` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
-  ADD CONSTRAINT `poll_votes_ibfk_2` FOREIGN KEY (`poll_option_id`) REFERENCES `poll_options` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `poll_votes_ibfk_2` FOREIGN KEY (`poll_option_id`) REFERENCES `poll_options` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `poll_votes_ibfk_3` FOREIGN KEY (`vote_by`) REFERENCES `users` (`idUsers`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `posts`

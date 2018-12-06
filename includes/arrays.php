@@ -29,6 +29,10 @@
                             slug => "categories.php",
                             title => "Forums"
                         ),
+                        array(
+                            slug => "poll-view.php",
+                            title => "Polls"
+                        ),
                     );
     
     // Team Members

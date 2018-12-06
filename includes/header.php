@@ -17,7 +17,8 @@
 <html>
     <head>
         <meta name="description" content="An Information Pool System" />
-        <meta name="keywords" content="put, keywords, here" />
+        <meta name="keywords" content="put, keywords, here" >
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <title><?php echo TITLE; ?></title>
         <link href="includes/styles.css" rel="stylesheet"> 
         <link rel="shortcut icon" href="img/logo.ico" />
