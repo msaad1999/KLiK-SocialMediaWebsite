@@ -9,7 +9,6 @@ if (!empty($_FILES['dp']['name']))
     $fileSize = $_FILES['dp']['size'];
     $fileError = $_FILES['dp']['error'];
     $fileType = $_FILES['dp']['type']; 
-
     $fileExt = explode('.', $fileName);
     $fileActualExt = strtolower(end($fileExt));
 

@@ -1,40 +1,135 @@
-<?php 
-    define('TITLE',"Home | Franklin's Fine Dining");
-    include 'includes/header.php';
-?>
+<?php
 
+    session_start();
+    define('TITLE',"Contact Us | KLiK");
+    
+    if(!isset($_SESSION['userId']))
+    {
+        header("Location: login.php");
+        exit();
+    }
+    include 'includes/navbar.php';
+?>  
 
-<h1>Create a Poll</h1>
+<!DOCTYPE html>
+<html>
+<head>
+	<title><?php echo TITLE; ?></title>
+        
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <link rel="stylesheet" type="text/css" href="css/comp-creation.css">
+        
+        <link rel="shortcut icon" href="img/logo.ico">
+</head>
+<body>
 
-<form id="contact-form" action="includes/create-poll.inc.php" method="post">
     
-    <label for="title">Poll Title</label>
-    <input type="text" name="title" id="title" placeholder="Add poll title"><br>
     
-    <textarea id="desc" name="desc" placeholder="Optional Poll Description"></textarea>
     
-    <label for="option">Poll Options</label>
-    <div class="input_fields_wrap">
-        <button class="add_field_button">Add More Fields</button>
-        <div><input type="text" name="option[]" id="option" placeholder="poll option"><br>
-        <input type="text" name="option[]" id="option" placeholder="poll option"></div>
-    </div>
-    
-    <input type="checkbox" id="subscribe" name="is-locked" value="is-locked">
-    <label for="subscribe">Make the Poll locked</label>
-    <p>*The users will not be able to change their vote after casting it</p>
-    
-    <input type="submit" class="button next" name="poll-submit" value="Create Poll">
-    
-</form>
+    <div class="bg-contact2" style="background-image: url('img/banner.png');">
+		<div class="container-contact2">
+			<div class="wrap-contact2">
+				<form class="contact2-form" method="post" action="includes/create-poll.inc.php">
+					<span class="contact2-form-title">
+						Create Poll
+					</span>
 
-<a href="./poll-view.php" class="button previous">View Polls</a>
+                                    
+                                        <span class="text-center">
+                                        <?php
+                                            if(isset($_GET['error']))
+                                            {
+                                                if($_GET['error'] == 'emptyfields')
+                                                {
+                                                    echo '<h5 class="text-danger">*Fill In All The Fields</h5>';
+                                                }
+                                                else if ($_GET['error'] == 'titletaken')
+                                                {
+                                                    echo '<h5 class="text-danger">*There is already a poll with this title</h5>';
+                                                }
+                                                else if ($_GET['error'] == 'sqlerror')
+                                                {
+                                                    echo '<h5 class="text-danger">*Website Error: Contact admin to have the issue fixed</h5>';
+                                                }
+                                            }
+                                            else if (isset($_GET['creation']) == 'success')
+                                            {
+                                                echo '<h5 class="text-success">*Poll successfully created</h5>';
+                                            }
+                                        ?>
+                                        </span>
+                                    
+                                    
+					<div class="wrap-input2 validate-input" data-validate="Name is required">
+						<input class="input2" type="text" name="title">
+						<span class="focus-input2" data-placeholder="Poll Title"></span>
+					</div>
+                                    
+                                        <div class="checkbox-animated">
+                                            <input id="checkbox_animated_1" type="checkbox" name="is-locked" value="is-locked">
+                                            <label for="checkbox_animated_1">
+                                                <span class="check"></span>
+                                                <span class="box text-muted"></span>
+                                                Make the poll Locked
+                                            </label>
+                                        </div><br>
 
-
-    <script>
+					<div class="wrap-input2 validate-input" data-validate = "Description is required">
+						<textarea class="input2" name="desc"></textarea>
+						<span class="focus-input2" data-placeholder="Poll Description"></span>
+					</div>
+                                    
+                                        
+                                        <div class="col-sm-4">
+                                            <label for="option">Poll Options</label>
+                                            <div class="input_fields_wrap">
+                                                    <button class="add_field_button btn btn-light">Add More Fields</button>
+                                                    <div class="wrap-input2 ">
+                                                        <input class='input2' type="text" name="option[]" id="option" placeholder="poll option">
+                                                    </div>
+                                                    <div class="wrap-input2 ">
+                                                        <input class='input2' type="text" name="option[]" id="option" placeholder="poll option">
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+					<div class="container-contact2-form-btn">
+						<div class="wrap-contact2-form-btn">
+							<div class="contact2-form-bgbtn"></div>
+                                                        <button class="contact2-form-btn" type="submit" name="poll-submit">
+								Add Poll
+							</button>
+						</div>
+					</div>
+                                        
+                                        <div class="text-center">
+                                        <br><br><a class="btn btn-light btn-lg btn-block" href="poll-view.php">
+                                            View Polls</a>
+                                        </div>
+                                        
+				</form>
+			</div>
+		</div>
+	</div>
+    
+  
+    
+    
+    
+    
+        
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+        <script src="js/creation-main.js"></script>
+        
+        
+        <script>
         $(document).ready(function() {
             var max_fields      = 6; //maximum input boxes allowed
-            var wrapper   		= $(".input_fields_wrap"); //Fields wrapper
+            var wrapper   	= $(".input_fields_wrap"); //Fields wrapper
             var add_button      = $(".add_field_button"); //Add button ID
 
             var x = 1; //initlal text box count
@@ -42,8 +137,10 @@
                     e.preventDefault();
                     if(x < max_fields){ //max input box allowed
                             x++; //text box increment
-                            $(wrapper).append('<div><input type="text" name="option[]"\n\
-                placeholder="poll option" id="option"><a href="#" class="remove_field">\n\Remove</a></div>'); //add input box
+                            $(wrapper).append('<div class="wrap-input2">\n\
+                                                <input type="text" name="option[]" placeholder="poll option" id="option"\
+                                                    ><a href="#" class="remove_field"><i class="fa fa-trash" aria-hidden="true"></i></a>\
+                                               </div>'); //add input box
                     }
             });
 
@@ -53,11 +150,6 @@
         });
     </script>
     
-
-
-
-
-
-<?php 
-    include 'includes/footer.php';
-?>
+    
+    </body>
+</html>

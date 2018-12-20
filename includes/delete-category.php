@@ -9,18 +9,27 @@ if (isset($_GET['id']) && isset($_SESSION['userId']) && ($_SESSION['userLevel'] 
     
     $category = $_GET['id'];
     
+    if(isset($_GET['page']))
+    {
+        $page = $_GET['page'];
+    }
+    else
+    {
+        $page = 'forum';
+    }
+    
     $sql = "delete from categories where cat_id=?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql))
     {
-        header("Location: ../categories.php?error=sqlerror");
+        header("Location: ../".$page.".php?error=sqlerror");
         exit();
     }
     else
     {
         mysqli_stmt_bind_param($stmt, "s", $category);
         mysqli_stmt_execute($stmt);
-        header("Location: ../categories.php");
+        header("Location: ../".$page.".php");
         exit();
     }
     
@@ -32,6 +41,6 @@ if (isset($_GET['id']) && isset($_SESSION['userId']) && ($_SESSION['userLevel'] 
 
 else
 {
-    header("Location: ../categories.php");
+    header("Location: ../".$page.".php");
     exit();
 }

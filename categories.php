@@ -1,77 +1,113 @@
-<?php
-    define('TITLE',"Forum | Franklin's Fine Dining");
-    include 'includes/header.php';
-?>
-
-<hr>
-<h1>Categories</h1>
 
 <?php
 
-    $sql = "select * from categories;";
-    $stmt = mysqli_stmt_init($conn);    
+    session_start();
+    require 'includes/dbh.inc.php';
+    define('TITLE',"Contact Us | KLiK");
     
-    if (!mysqli_stmt_prepare($stmt, $sql))
-    {
-        header("Location: ../categories.php?error=sqlerror");
-        exit();
-    }
-    else
-    {
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
+    include 'includes/navbar.php';
+?>  
+
+<!DOCTYPE html>
+<head>
+	<title><?php echo TITLE; ?></title>
         
-        echo "<table>"
-                . "<thead>"
-                    . "<tr>"
-                        . "<th style='text-align: center'>Name</th>"
-                        . "<th style='text-align: center'>Forums</th>"
-                        . "<th style='text-align: center'>Description</th>";
-        if ($_SESSION['userLevel'] == 1)
-        {
-            echo '<th></th>';
-        }
-        echo         "</tr>"
-                . "</thead>"
-                . "<tbody>";
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" type="text/css" href="css/list-page.css">
         
-        while ($row = mysqli_fetch_assoc($result))
-        {
-            $sql2 = 'select * from topics where topic_cat=?';
-            mysqli_stmt_prepare($stmt, $sql2);
-            mysqli_stmt_bind_param($stmt, "s", $row['cat_id']);
-            mysqli_stmt_execute($stmt);
-            mysqli_stmt_store_result($stmt);
-            $num = mysqli_stmt_num_rows($stmt);
+        <link rel="shortcut icon" href="img/logo.ico">
+</head>
+    <body style="background: #f1f1f1">
+
+    
+   
+
+        <main role="main" class="container">
+      <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
+          <img class="mr-3" src="img/logo.png" alt="" width="48" height="48">
+        <div class="lh-100">
+          <h1 class="mb-0 text-white lh-100">KLiK Forums</h1>
+          <small>Spreading Ideas</small>
+        </div>
+      </div>
+
+      <div class="my-3 p-3 bg-white rounded shadow-sm">
+        <h5 class="border-bottom border-gray pb-2 mb-0">All Categories</h5>
+        
+        
+        <?php
+
+            $sql = "select cat_id, cat_name, cat_description, (
+                        select count(*) from topics
+                        where topics.topic_cat = cat_id
+                        ) as forums
+                    from categories
+                    order by cat_id asc";
             
-            echo "<tr>"
-                    . "<td>"
-                        . "<a href='./topics.php?cat=".$row['cat_id']."'><p>".$row['cat_name']."</p></a>"
-                    . "</td>"
-                    . "<td>"
-                        . "<p style='text-align: center'>".$num."</p>"
-                    . "</td>"
-                    . "<td>"
-                        . "<p>".$row['cat_description']."</p>"
-                    . "</td>";
+            $stmt = mysqli_stmt_init($conn);    
+
+            if (!mysqli_stmt_prepare($stmt, $sql))
+            {
+                die('SQL error');
+            }
+            else
+            {
+                mysqli_stmt_execute($stmt);
+                $result = mysqli_stmt_get_result($stmt);
+
+                while ($row = mysqli_fetch_assoc($result))
+                {
+                    
+                    echo '<a href="topics.php?cat='.$row['cat_id'].'">
+                        <div class="media text-muted pt-3">
+                            <img src="img/logo.png" alt="" class="mr-2 rounded div-img ">
+                            <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray ">
+                              <strong class="d-block text-gray-dark">'.ucwords($row['cat_name']).'</strong></a>
+                                  <br>'.$row['cat_description'].'
+                            </p>
+                            <span class="text-right text-primary"> 
+                                Forums: '.$row['forums'].' <i class="fa fa-book" aria-hidden="true"></i><br>';
+                    
+                    if ($_SESSION['userLevel'] == 1)
+                    {
+                        echo '<a href="includes/delete-category.php?id='.$row['cat_id'].'&page=categories" >
+                                <i class="fa fa-trash" aria-hidden="true" style="color: red;"></i>
+                              </a>
+                            </span>';
+                    }
+                    else
+                    {
+                        echo '</span>';
+                    }
+                    
+                    echo '</div>';
+                }
+           }
+           
+           
             if ($_SESSION['userLevel'] == 1)
             {
-                echo "<td>"
-                    . "<a href='includes/delete-category.php?id=".$row['cat_id']."' class='button previous'>Delete</a>"
-                    . "</td>";
+                echo '<small class="d-block text-right mt-3">
+                        <a href="create-category.php" class="btn btn-primary">Create Category</a>';
             }
-            echo "</tr>";
-        }
+            else
+            {
+                echo '<small class="d-block text-right mt-3">';
+            }
+        ?>
         
-        echo "</tbody> </table>";
-    }
-    if ($_SESSION['userLevel'] == 1)
-    {
-        echo '<a href="./create-category.php" class="button previous">Create Category</a>';
-    }
-?>
-
-
-<hr>
-
-<?php include 'includes/footer.php'; ?>
+        
+        </small>
+        
+        
+      </div>
+    </main>
+        
+        
+        
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    </body>
+</html>

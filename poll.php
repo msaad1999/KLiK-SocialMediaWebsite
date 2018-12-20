@@ -152,7 +152,8 @@ if(isset($_POST['voteSubmit'])){
     );
     //insert vote data
     $voteSubmit = $poll->vote($voteData);
-    header("Location: ./poll.php?poll=".$pollid);
+    //header("Location: ./poll.php?poll=".$pollid);
+    header("Refresh:0");
 }
 ?>
 

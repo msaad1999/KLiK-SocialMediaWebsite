@@ -1,0 +1,238 @@
+
+html{ font-size: 100%; height: 100%; overflow-x: hidden; margin: 0px;  padding: 0px; touch-action: manipulation; }
+
+
+body{ font-size: 16px; width: 100%; height: 100%; margin: 0; font-weight: 400;
+	-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; word-wrap: break-word; 
+	color: #333; }
+
+h1, h2, h3, h4, h5, h6, p, a, ul, span, li, img, inpot, button{ margin: 0; padding: 0; }
+
+h1,h2,h3,h4,h5,h6{ line-height: 1.5; font-weight: inherit; }
+
+
+
+p{ line-height: 1.6; font-size: 1.05em; font-weight: 400; color: #777; }
+
+h1{ font-size: 4em; line-height: 1; }
+h2{ font-size: 2.2em; line-height: 1.1; }
+h3{ font-size: 1.8em; }
+h4{ font-size: 1.3em; }
+h5{ font-size: 1em; }
+h6{ font-size: .9em; letter-spacing: 1px; }
+
+a, button{ display: inline-block; text-decoration: none; color: inherit; line-height: 1; 
+	-webkit-transition: all .25s ease-in-out; transition: all .25s ease-in-out; }
+
+a:focus, a:active, a:hover,
+button:focus, button:active, button:hover,
+a b.light-color:hover{ text-decoration: none; color: #FFA804; }
+
+b{ font-weight: 600; }
+
+img{ width: 100%; }
+
+li{ list-style: none; display: inline-block; }
+
+span{ display: inline-block; }
+
+button{ outline: 0; border: 0; background: none; cursor: pointer; }
+
+.icon{ font-size: 1.1em; display: inline-block; line-height: inherit; }
+
+[class^="icon-"]:before, [class*=" icon-"]:before{ line-height: inherit; }
+
+b.max-bold{ font-weight: 700; }
+
+
+
+/* ---------------------------------
+2. COMMONS FOR PAGE DESIGN
+--------------------------------- */
+
+.section{ padding: 20px 0 70px; }
+
+.section .heading{ margin-bottom: 60px; }
+
+.section .heading:before{ content:''; height: 10px; width: 50px; border-radius: 5px;
+	margin-bottom: 20px; display: block; background: #FFA804; }
+	
+.margin-t-10{ margin-top: 10px; }
+
+.margin-b-30{ margin-bottom: 30px; }
+.margin-b-50{ margin-bottom: 50px; }
+
+.margin-tb-20{ margin-top: 20px; margin-bottom: 20px; }
+.margin-tb-30{ margin-top: 30px; margin-bottom: 30px; }
+
+.font-yellow{ color: #FFA600; }
+
+.font-semi-white{ color: #ddd; }
+
+.font-lite-black{ color: #999; }
+
+
+/* ---------------------------------
+3. HEADER
+--------------------------------- */
+
+header{ position: absolute; top: 30px; left: 0; right: 0; z-index: 100; }
+
+header .heading-wrapper{ border-radius: 5px; padding: 30px 40px 20px; background: #FFAD01; color: #fff; }
+
+header .info{ margin-bottom: 10px; }
+
+header .info .icon{ float: left; font-size: 30px; }
+
+header .info .right-area{ margin-left: 45px; }
+
+header .downlad-btn{ padding: 15px 30px; border-radius: 4px; float: right; margin-top: 30px;
+	box-shadow: inset 0 0px 4px rgba(0,0,0,.3); background: #FFAD01; color: #fff; 
+	-webkit-transition: all .2s ease; transition: all .2s ease; }
+
+header .downlad-btn:hover{ -webkit-transform: translateY(-4px); transform: translateY(-4px); }
+
+
+/* ---------------------------------
+4. INTRO SECTION
+--------------------------------- */
+
+.intro-section{ padding-top: 200px; position: relative; background-size: cover; 
+	z-index: 1; }
+
+.intro-section:before{ content:''; z-index: -1; position: absolute; top: 0; bottom: 0; left: 0; 
+	right: 0; background: rgba(0,0,0, .2); }
+	
+.intro-section:after{ content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+	height: 150px; z-index: -1; background: #fff; }
+
+.intro{ padding: 0 20px; margin-top: 100px; text-align: center; background: #fff; }
+
+.intro .profile-img{ height: 200px; width: 200px; border-radius: 100px; margin: 0 auto; 
+	overflow: hidden; position: relative; top: -100px; margin-bottom: -70px;  }
+
+.intro .information > li{ display: block; margin: 5px 0; }
+
+.intro .social-icons > li > a{ height: 35px; line-height: 35px; width: 35px; border-radius: 20px; 
+	overflow: hidden; z-index: 1; position: relative; margin: 0 5px 5px; background: #887392; color: #fff; }
+
+.intro .social-icons > li > a:after{ content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+	top: 0; z-index: -1; border-radius: 20px; background: #FFA804; 
+	-webkit-transition: all .2s ease; transition: all .2s ease;
+	-webkit-transform: scale(0); transform: scale(0); }
+
+.intro .social-icons > li > a:hover:after{ -webkit-transform: scale(1); transform: scale(1); }
+
+
+/* ---------------------------------
+5. BTN SECTION
+--------------------------------- */
+
+.btn-section{ padding-top: 100px; }
+
+.btn{ margin: 0 10px 10px; padding: 12px 30px; border-radius: 5px; }
+
+.btn-bg-yellow{ border: 1px solid #FFAD01; background: #FFAD01; color: #fff; }
+
+.btn-bg-purple{ border: 1px solid #28023D; background: #28023D; color: #fff; }
+
+.btn-border-purple{ border: 1px solid #28023D; color: #222; }
+
+.btn-color-yellow{ border: 1px solid #28023D; background: #28023D; color: #FFAD01; }
+
+
+.btn-bg-yellow:hover{ background: none; color: #111; }
+
+.btn-bg-purple:hover{ background: none; color: #111; }
+
+.btn-border-purple:hover{ background: #28023D; color: #fff; }
+
+.btn-color-yellow:hover{ background: none; color: #111; }
+
+
+
+/* ---------------------------------
+6. PROGRESSBAR & ACCORDIANS
+--------------------------------- */
+
+/* LINE PROGRESSBAR */
+	
+.line-progress{ position: relative; padding-bottom: 25px; }
+
+.line-progress .progressbar-text{ position: absolute; bottom: 0; right: 0; font-size: 1.1em; 
+	font-weight: 500; color: #777!important; }
+
+.line-progress .progress-title{ position: absolute; bottom: 0; left: 0; color: #777; }
+
+
+/* ACCORDIANS */
+
+.panel-area .panel-title{ padding: 10px 20px; cursor: pointer; position: relative; color: #fff;
+	border-radius: 3px; background: #FFAD01; color: #fff; }
+
+.panel-area .panel-desc{ max-height: 0; overflow: hidden; opacity: 0;
+	-webkit-transition: all .05s, opacity .25s .1s, -webkit-transform .1s; 
+	transition: all .05s, opacity .25s .1s, transform .1s; 
+	-webkit-transform: scaleY(0); transform: scaleY(0); 
+	-webkit-transform-origin: top; transform-origin: top; }
+
+.panel-area .panel-title .icon{ float: right; font-size: .7em; margin-top: 5px; }
+
+.panel-area .panel-title.active{ background: #28023D; }
+
+.panel-area .panel-title.active + .panel-desc{ opacity: 1; padding: 20px 20px 0; max-height: 300px; 
+	-webkit-transform: scaleY(1); transform: scaleY(1); }
+
+.panel-area .panel-title .icon.plus,
+.panel-area .panel-title.active .icon.minus{ display: block; }
+
+.panel-area .panel-title .icon.minus,
+.panel-area .panel-title.active .icon.plus{ display: none; }
+
+
+/* ---------------------------------
+7. LOADERS SECTION
+--------------------------------- */
+
+.radial-progress{ position: relative; max-width: 180px; margin: 0 auto; }
+
+.radial-progress .progressbar-text{ font-size: 2.2em; font-weight: 500; 
+	padding-bottom: 25px!important; color: #333!important; }
+
+.radial-progress .progressbar-text:after{ content:'%'; }
+
+.radial-progress .progress-title{ position: absolute; top: 50%; left: 50%; width: 100%;
+	letter-spacing: 0; text-align: center; color: #777; 
+	-webkit-transform: translate(-50%, 15px); transform: translate(-50%, 15px); }
+
+	
+/* ---------------------------------
+8. PROGRESSIONS SECTION
+--------------------------------- */
+
+
+.counter{ position: relative; }
+	
+.counter .title{ text-align: right; margin-right: 130px; color: #FDAC05; }
+
+.counter .desc{ position: absolute; bottom: 4px; right: 0px; width: 110px; }
+
+
+/* ---------------------------------
+9. ICONBOXES SECTION
+--------------------------------- */
+
+
+.line-icon{ display: block; height: 60px; width: 60px; background-size: cover; }
+
+.icon-rocket{ background-image: url(../../images/logos.png); background-position: 0px 0; }
+.icon-cut{ background-image: url(../../images/logos.png); background-position: 120px 0; }
+.icon-star{ background-image: url(../../images/logos.png); background-position: 60px 0; }
+
+
+/* ---------------------------------
+10. FOOTER
+--------------------------------- */
+
+.copyright{ text-align: center; padding: 30px 0; background: #28023D; }
+

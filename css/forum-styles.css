@@ -1,0 +1,239 @@
+
+.btn-primary, .btn-block {
+    color: #fff;
+    padding: 10px 34px;
+    background-color: #4f5173;
+    border-color: #fdfffb;
+}
+
+.btn-primary:hover, .btn-block:hover {
+    color: #cee8f0;
+    padding: 10px 34px;
+    background-color: #404264;
+    border-color: #000;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+    color: #cee8f0;
+    padding: 10px 34px;
+    background-color: #404264;
+    border-color: #000;
+}
+
+.btn-default {
+    color: #000;
+    padding: 12px 36px;
+    background-color: #fff;
+    border-color: #313438
+}
+
+.btn-default:hover {
+    color: #000;
+    padding: 12px 36px;
+    background-color: #fff;
+    border-color: #000;
+    box-shadow: 8px 5px 5px #888
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+    color: #fff;
+    background-color: #000;
+    border-color: #fff;
+    padding: 12px 36px;
+    box-shadow: 8px 5px 5px #888
+}
+
+::selection {
+    background: #000;
+    color: #fff
+}
+
+::-moz-selection {
+    background: #000;
+    color: #fff
+}
+
+.card {
+    padding: 1.3rem;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 100px;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    box-shadow: 3px 3px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.post-header {
+    margin-bottom: 2.2rem;
+    margin-top: -1rem;
+}
+
+.tag {
+    padding: 1px 10px 1px 8px;
+    color: #e6faff;
+    background: #4f5173;
+}
+
+.post-content {
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+}
+
+.date {
+    margin: -1.3rem;
+    background: #4f5173;
+    color: #e6faff;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+}
+
+.span-post-no {
+    text-align: right;
+    margin-right: 1rem;
+    float: right;
+}
+
+.post {
+    margin-bottom: 2rem;
+}
+
+.likes {
+    background: #4f5173;
+    color: #e6faff;
+    border-radius: .1rem;
+    padding-left: 1rem;
+    margin: -1.3rem;
+}
+
+a {
+    color: #ececec;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #d4525c;
+    text-decoration: none;
+}
+
+.qoute {
+    background: #adaebfd6;
+    color: #fdfdfd;
+    padding-left: .4rem;
+    display: block;
+    margin: 1rem;
+}
+
+.quote-user {
+    color: #191b1b;
+    font-weight: 600;
+}
+
+table {
+    margin-bottom: 1.2rem;
+}
+
+.blk-link {
+    color: black;
+}
+
+th {
+    text-align: left;
+}
+
+/* @media only screen and (max-width: 580px) {*/
+.user {
+    background: #8386af1c;
+    padding: 30px;
+    margin-bottom: 40px;
+}
+
+/*}*/
+
+.profile-link {
+    background: #8386af2e;
+    color: #000000;
+    padding-top: .1rem;
+    padding-bottom: .1rem;
+    padding-left: .2rem;
+    padding-right: .2rem;
+    border-radius: .2rem;
+}
+
+li a {
+    color: #efefef;
+}
+
+.breadcrumb-item.active {
+    color: #c5deec;
+    font-weight: 600;
+}
+
+.breadcrumb {
+    background-color: #4f5173;
+    box-shadow: 3px 3px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #e6faff;
+    background-color: #4f5173;
+    border-color: #4a4b5a;
+    box-shadow: 3px 3px 10px 1px rgba(0, 0, 0, 0.3);
+}
+
+.page-link {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #4f5152;
+    background-color: #fff;
+    border: 1px solid #d5d6d8;
+    box-shadow: 3px 3px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+textarea .form-control {
+    height: auto;
+    box-shadow: 3px 3px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+
+.user-img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.vote {
+    position:absolute;
+    right: 0;
+    bottom: 40px;
+}
+
+.vote-count {
+    font-size: 30px;
+}
+
+a .fa {
+    color: blue;
+}
+
+a .fa-trash {
+    color: red;
+}
+
+a .fa:hover {
+    color: #709fea;
+}
+
+.fa {
+    color: grey;
+}

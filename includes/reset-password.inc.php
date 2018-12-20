@@ -101,7 +101,7 @@ if (isset($_POST['reset-password-submit']))
                                 mysqli_stmt_execute($stmt);
                                 
                                 //update the index page to show a msg for this 
-                                header ('Location: ../index.php?newpwd=passwordupdated');
+                                header ('Location: ../login.php?newpwd=passwordupdated');
                             }
                         }
                     }

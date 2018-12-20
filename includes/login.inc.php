@@ -10,7 +10,7 @@ if (isset($_POST['login-submit']))
     
     if (empty($mailuid) || empty($password))
     {
-        header("Location: ../index.php?error=emptyfields");
+        header("Location: ../login.php?error=emptyfields");
         exit();
     }
     else
@@ -20,7 +20,7 @@ if (isset($_POST['login-submit']))
         
         if (!mysqli_stmt_prepare($stmt, $sql))
         {
-            header("Location: ../index.php?error=sqlerror");
+            header("Location: ../login.php?error=sqlerror");
             exit();
         }
         else
@@ -36,7 +36,7 @@ if (isset($_POST['login-submit']))
                 $pwdCheck = password_verify($password, $row['pwdUsers']);
                 if ($pwdCheck == false)
                 {
-                    header("Location: ../index.php?error=wrongpwd");
+                    header("Location: ../login.php?error=wrongpwd");
                     exit();
                 }
                 else if($pwdCheck == true)
@@ -52,6 +52,7 @@ if (isset($_POST['login-submit']))
                     $_SESSION['headline'] = $row['headline'];
                     $_SESSION['bio'] = $row['bio'];
                     $_SESSION['userImg'] = $row['userImg'];
+                    $_SESSION['coverImg'] = $row['coverImg'];
                     
                     
                     header("Location: ../index.php?login=success");
@@ -59,13 +60,13 @@ if (isset($_POST['login-submit']))
                 }
                 else
                 {
-                    header("Location: ../index.php?error=wrongpwd");
+                    header("Location: ../login.php?error=wrongpwd");
                     exit();
                 }
             }
             else
             {
-                header("Location: ../index.php?error=nouser");
+                header("Location: ../login.php?error=nouser");
                 exit();
             }
         }
@@ -74,6 +75,6 @@ if (isset($_POST['login-submit']))
 }
  else 
 {
-    header("Location: ../index.php");
+    header("Location: ../login.php");
     exit();
 }

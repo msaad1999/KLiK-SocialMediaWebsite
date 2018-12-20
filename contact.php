@@ -1,12 +1,30 @@
 <?php
-    define('TITLE',"Menu | Franklin's Fine Dining");
-    include 'includes/header.php';
-?>
 
-<div id="contact">
+    session_start();
+    define('TITLE',"Contact Us | KLiK");
     
-    <hr>
-    <h1>Contact Us!</h1>
+    if(!isset($_SESSION['userId']))
+    {
+        header("Location: login.php");
+        exit();
+    }
+    include 'includes/navbar.php';
+?>  
+
+<!DOCTYPE html>
+<head>
+	<title><?php echo TITLE; ?></title>
+        
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" type="text/css" href="css/contact-util.css">
+	<link rel="stylesheet" type="text/css" href="css/contact-main.css">
+        
+        <link rel="shortcut icon" href="img/logo.ico">
+</head>
+<body>
+
     
     <?php
         
@@ -25,7 +43,7 @@
     
         if (isset($_POST['contact_submit'])){
             
-            $name = trim($_POST['name']);
+            $name = trim($_POST['first-name']).' '.trim($_POST['last-name']);
             $email = trim($_POST['email']);
             $msg = $_POST['message'];
             
@@ -93,41 +111,115 @@
                 echo '<h4 class="error">Message could not be sent. Mailer Error: '. $mail->ErrorInfo
                         .'</h4>';
             }
-        
+        }
     ?>
-    
-    <!-- Show success message after email is sent -->
-    <h5> Thanks for contacting Franklin's!</h5>
-    <p>Please Allow 24 hours for a response</p>
-    <p><a href='index.php' class='button block'>&laquo; Go To Home Page</a></p>
-    
-    
-    <?php } else{ ?>
-     
-  
-    
-    <form method="post" action="" id="contact-form">
-        
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name">
-        
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email">
-        
-        <label for="message">Message</label>
-        <textarea id="message" name="message"></textarea>
-        
-        <input type="checkbox" id="subscribe" name="subscribe" value="subscribe">
-        <label for="subscribe">Subscribe to newsletter</label>
-        
-        <input type="submit" class="button next" name="contact_submit" value="Send Message">
-        
-    </form>
-    
-    <?php } ?>   
-    
-    <hr>
 
-</div>
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form class="contact100-form validate-form" method="post" action="">
+				<span class="contact100-form-title">
+					Send Us A Message
+				</span>
 
-<?php include 'includes/footer.php'; ?> 
+				<label class="label-input100" for="first-name">Tell us your name *</label>
+				<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Type first name">
+					<input id="first-name" class="input100" type="text" name="first-name" placeholder="First name">
+					<span class="focus-input100"></span>
+				</div>
+				<div class="wrap-input100 rs2-wrap-input100 validate-input" data-validate="Type last name">
+					<input class="input100" type="text" name="last-name" placeholder="Last name">
+					<span class="focus-input100"></span>
+				</div>
+
+				<label class="label-input100" for="email">Enter your email *</label>
+				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<input id="email" class="input100" type="text" name="email" placeholder="Eg. example@email.com">
+					<span class="focus-input100"></span>
+				</div>
+                                
+                                <div class="checkbox-animated">
+                                    <input id="checkbox_animated_1" type="checkbox" name="subscribe" value="subscribe">
+                                    <label for="checkbox_animated_1">
+                                        <span class="check"></span>
+                                        <span class="box"></span>
+                                        Subscribe to Newsletter
+                                    </label>
+                                </div>
+
+				<label class="label-input100" for="message">Message *</label>
+				<div class="wrap-input100 validate-input" data-validate = "Message is required">
+                                    <textarea id="message" class="input100" name="message" rows="8"
+                                                  placeholder="Write us a message"></textarea>
+					<span class="focus-input100"></span>
+				</div>
+                                
+				<div class="container-contact100-form-btn">
+                                    
+                                    <input type="submit" class="contact100-form-btn" 
+                                           name="contact_submit" value="Send Message">
+                                    
+				</div>
+			</form>
+
+			<div class="contact100-more flex-col-c-m" style="background-image: url('img/banner.png');">
+				<div class="flex-w size1 p-b-47">
+					<div class="txt1 p-r-25">
+						<span class="lnr lnr-map-marker"></span>
+					</div>
+
+					<div class="flex-col size2">
+						<span class="txt1 p-b-20">
+							Address
+						</span>
+
+						<span class="txt2">
+							Mada Center 8th floor, 379 Hudson St, New York, NY 10018 US
+						</span>
+					</div>
+				</div>
+
+				<div class="dis-flex size1 p-b-47">
+					<div class="txt1 p-r-25">
+						<span class="lnr lnr-phone-handset"></span>
+					</div>
+
+					<div class="flex-col size2">
+						<span class="txt1 p-b-20">
+							Lets Talk
+						</span>
+
+						<span class="txt3">
+							+1 800 1236879
+						</span>
+					</div>
+				</div>
+
+				<div class="dis-flex size1 p-b-47">
+					<div class="txt1 p-r-25">
+						<span class="lnr lnr-envelope"></span>
+					</div>
+
+					<div class="flex-col size2">
+						<span class="txt1 p-b-20">
+							General Support
+						</span>
+
+						<span class="txt3">
+							contact@example.com
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="dropDownSelect1"></div>
+
+        
+        
+        
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/contact-main.js"></script>
+    </body>
+</html>
