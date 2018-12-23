@@ -3,30 +3,23 @@
     session_start();
     include_once 'includes/dbh.inc.php';
     
-    define('TITLE',"Contact Us | KLiK");
+    define('TITLE',"Create Forum | KLiK");
     
     if(!isset($_SESSION['userId']))
     {
         header("Location: login.php");
         exit();
     }
-    include 'includes/navbar.php';
+    
+    include 'includes/HTML-head.php';
 ?>  
 
-<!DOCTYPE html>
-<head>
-	<title><?php echo TITLE; ?></title>
-        
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="css/styles.css">
         <link rel="stylesheet" type="text/css" href="css/comp-creation.css">
-        
-        <link rel="shortcut icon" href="img/logo.ico">
 </head>
+
 <body>
 
-    
+    <?php include 'includes/navbar.php'; ?>
     
     
     <div class="bg-contact2" style="background-image: url('img/banner.png');">

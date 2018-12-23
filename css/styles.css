@@ -20,10 +20,24 @@ a:hover {
     text-decoration: none
 }
 
+h1 {
+    color: #ff9000;
+}
+
+.grey {
+    background-color: #CCCCCC;
+    color: white;
+}
+
+.grey:hover {
+    background-color: #999999;
+    color: white;
+}
+
 /* [Login page] cover */
 
 #cover {
-    background: #222 url('../img/stars.jpg') center center no-repeat;
+    background: #222 url('../img/cover2.png') center center no-repeat;
     background-size: cover;
     color: white;
     height: 100%;
@@ -33,7 +47,7 @@ a:hover {
 }
 
 #signup {
-    background: url('../img/stars.jpg') center center no-repeat;
+    background: url('../img/cover2.png') center center no-repeat;
     background-size: cover; 
     background-attachment: fixed;
     width: 100%;
@@ -86,7 +100,7 @@ a:hover {
   border-radius: 0;
   
 }
-.card-profile .card-img-profile {
+.card-img-profile {
   width: 110px;
   height: 110px;
   object-fit: cover;
@@ -94,6 +108,12 @@ a:hover {
   margin-top: -45px;
   margin-bottom: 35px;
   border: 3px solid #e6e5e1;
+}
+
+.edit-profile {
+    position: absolute;
+    right: 10px;
+    top: 110px;
 }
 
 .card-img-profile {
@@ -171,180 +191,10 @@ input[type="radio"].toggle:checked + label:after {
   z-index: 0;
 }
 
-/* --------------- Inbox ---------------- */
-
-.container{max-width:1170px; margin:auto;}
-img{ max-width:100%;}
-.inbox_people {
-  background: #f8f8f8 none repeat scroll 0 0;
-  float: left;
-  overflow: hidden;
-  width: 40%; border-right:1px solid #c4c4c4;
-}
-.inbox_msg {
-  border: 1px solid #c4c4c4;
-  clear: both;
-  overflow: hidden;
-}
-.top_spac{ margin: 20px 0 0;}
-
-
-.recent_heading {float: left; width:40%;}
-.srch_bar {
-  display: inline-block;
-  text-align: right;
-  width: 60%; 
-}
-.headind_srch{ padding:10px 29px 10px 20px; overflow:hidden; border-bottom:1px solid #c4c4c4;}
-
-.recent_heading h4 {
-  color: #05728f;
-  font-size: 21px;
-  margin: auto;
-}
-.srch_bar input{ border:1px solid #cdcdcd; border-width:0 0 1px 0; width:80%; padding:2px 0 4px 6px; background:none;}
-.srch_bar .input-group-addon button {
-  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-  border: medium none;
-  padding: 0;
-  color: #707070;
-  font-size: 18px;
-}
-.srch_bar .input-group-addon { margin: 0 0 0 -27px;}
-
-.chat_ib h5{ font-size:15px; color:#464646; margin:0 0 8px 0;}
-.chat_ib h5 span{ font-size:13px; float:right;}
-.chat_ib p{ font-size:14px; color:#989898; margin:auto}
-.chat_img {
-  float: left;
-  width: 11%;
-}
-.chat_ib {
-  float: left;
-  padding: 0 0 0 15px;
-  width: 88%;
-}
-
-.chat_people{ overflow:hidden; clear:both;}
-.chat_list {
-  border-bottom: 1px solid #c4c4c4;
-  margin: 0;
-  padding: 18px 16px 10px;
-}
-.chat_list:hover {
-    background-color: #CCE1E8;
-}
-.inbox_chat { 
-    height: 550px; 
-    overflow-y: scroll;
-}
-.msg_history {
-    height: 550px; 
-    overflow-y: scroll;
-}
-
-.active_chat{ background:#ebebeb;}
-
-.incoming_msg_img {
-  display: inline-block;
-  width: 6%;
-}
-.received_msg {
-  display: inline-block;
-  padding: 0 0 0 10px;
-  vertical-align: top;
-  width: 92%;
- }
- .received_withd_msg p {
-  background: #ebebeb none repeat scroll 0 0;
-  border-radius: 3px;
-  color: #646464;
-  font-size: 14px;
-  margin: 0;
-  padding: 5px 10px 5px 12px;
-  width: 100%;
-}
-.time_date {
-  color: #747474;
-  display: block;
-  font-size: 12px;
-  margin: 8px 0 0;
-}
-.received_withd_msg { width: 57%;}
-.mesgs {
-  float: left;
-  padding: 0;
-  width: 60%;
-  background-image: url('../img/bg.jpg');
-}
-
- .sent_msg p {
-  background: #05728f none repeat scroll 0 0;
-  border-radius: 3px;
-  font-size: 14px;
-  margin: 0; color:#fff;
-  padding: 5px 10px 5px 12px;
-  width:100%;
-}
-.outgoing_msg{ 
-    overflow:hidden; 
-    margin:26px 0 26px;
-}
-
-.sent_msg {
-  float: right;
-  width: 46%;
-}
-.input_msg_write input {
-  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-  background-color: white;
-  border: medium none;
-  color: #4c4c4c;
-  font-size: 15px;
-  min-height: 48px;
-  width: 100%;
-}
-
-.type_msg {border-top: 1px solid #c4c4c4;position: relative;}
-.msg_send_btn {
-  background: #05728f none repeat scroll 0 0;
-  border: medium none;
-  border-radius: 50%;
-  color: #fff;
-  cursor: pointer;
-  font-size: 17px;
-  height: 33px;
-  position: absolute;
-  right: 0;
-  top: 11px;
-  width: 33px;
-}
-.messaging { padding: 0 0 50px 0;}
-.msg_history {
-  height: 516px;
-  overflow-y: auto;
-}
-.msg_history {
-    padding: 30px 0px 0 25px;
-}
-
-.chat_people_img {
-    width: 45px;
-    height: 45px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-.chat_people_inbox_img {
-    width: 35px;
-    height: 35px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-
 /*------------ Profile Page --------------*/
 
 #user-section {
-    background-color: #e6e5e1;
+    background-color: #F2F2F2;
     padding: 0px;
     margin: 40px 0px 60px 0px;
     padding-bottom: 20px;
@@ -507,4 +357,215 @@ img{ max-width:100%;}
 .creater-icon:hover {
     transform: scale(1.07);
 }
+
+
+
+
+
+
+.blog-cover {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.blog-author {
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    right: 20px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: -65px;
+    margin-bottom: 0px;
+    transition: transform .2s;
+}
+
+.blog-author:hover {
+    transform: scale(1.07);
+}
+
+
+.event-cover {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+
+/*-------------------- Custom Radio Buttons -----------------------*/
+
+.funkyradio label {
+    min-width: 400px;
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #D1D3D4;
+    font-weight: normal;
+}
+.funkyradio input[type="radio"]:empty, .funkyradio input[type="checkbox"]:empty {
+    display: none;
+}
+.funkyradio input[type="radio"]:empty ~ label, .funkyradio input[type="checkbox"]:empty ~ label {
+    position: relative;
+    line-height: 2.5em;
+    text-indent: 3.25em;
+    margin-top: 2em;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.funkyradio input[type="radio"]:empty ~ label:before, .funkyradio input[type="checkbox"]:empty ~ label:before {
+    position: absolute;
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    content:'';
+    width: 2.5em;
+    background: #D1D3D4;
+    border-radius: 3px 0 0 3px;
+}
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label:before, .funkyradio input[type="checkbox"]:hover:not(:checked) ~ label:before {
+    text-indent: .9em;
+    color: #C2C2C2;
+}
+.funkyradio input[type="radio"]:hover:not(:checked) ~ label, .funkyradio input[type="checkbox"]:hover:not(:checked) ~ label {
+    color: #888;
+}
+.funkyradio input[type="radio"]:checked ~ label:before, .funkyradio input[type="checkbox"]:checked ~ label:before {
+    content:'\1f5f8';
+    text-indent: .9em;
+    color: #333;
+    background-color: #ccc;
+}
+.funkyradio input[type="radio"]:checked ~ label, .funkyradio input[type="checkbox"]:checked ~ label {
+    color: #777;
+}
+.funkyradio input[type="radio"]:focus ~ label:before, .funkyradio input[type="checkbox"]:focus ~ label:before {
+    box-shadow: 0 0 0 3px #999;
+}
+.funkyradio-default input[type="radio"]:checked ~ label:before, .funkyradio-default input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #99ff99;
+}
+.funkyradio-primary input[type="radio"]:checked ~ label:before, .funkyradio-primary input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #337ab7;
+}
+.funkyradio-success input[type="radio"]:checked ~ label:before, .funkyradio-success input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #5cb85c;
+}
+.funkyradio-danger input[type="radio"]:checked ~ label:before, .funkyradio-danger input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #d9534f;
+}
+.funkyradio-warning input[type="radio"]:checked ~ label:before, .funkyradio-warning input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #f0ad4e;
+}
+.funkyradio-info input[type="radio"]:checked ~ label:before, .funkyradio-info input[type="checkbox"]:checked ~ label:before {
+    color: #fff;
+    background-color: #5bc0de;
+}
+
+/*------------------------*/
+
+h1, h2, h3, h4, h5, h6, p, a, ul, span, li, img, inpot, button{ margin: 0; padding: 0; }
+
+
+
+.voter-avatar {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform .2s;
+}
+
+.voter-avatar:hover {
+    transform: scale(1.07);
+}
+
+.empty-img {
+    width: 80px;
+    height: 80px;
+}
+
+.profile-empty-img {
+    height: 100px;
+}
+
+
+.signup-left {
+    top: 25%;
+}
+
+.social-icon {
+    background: #B0B0B0;
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    width: 75px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+}
+
+.social-icon:hover {
+    background: #6B6B6B;
+}
+
+.social-icon:active {
+    background: #ff9000;
+}
+
+.login-icons {
+    right: 25%;
+    left: 25%;
+}
+
+#card-admin-badge {
+    width: 40px;
+    position: absolute;
+    margin-top: 30px;
+    margin-left: -40px;
+}
+
+.navbar .fa {
+    color: #969696;
+}
+
+.navbar .fa:hover {
+    color: #ff9000 ;
+}
+
+.card-user-cover {
+    height: 100px;
+    object-fit: cover;
+}
+
+.btn-warning {
+    background-color: #ff9000;
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: #FFA13D;
+}
+
+.card-profile .fa {
+    color: grey;
+}
+
+
+.card-profile .fa:hover {
+    color: #ff9000;
+}
+
+
+
+
 

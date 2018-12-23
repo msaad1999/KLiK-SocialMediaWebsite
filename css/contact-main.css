@@ -3,6 +3,10 @@
 	margin: 0px; 
 	padding: 0px; 
 	box-sizing: border-box;
+        
+}
+body {
+    background: #f2f2f2;
 }
 
 body, html {
@@ -98,7 +102,7 @@ iframe {
 .txt3 {
   font-size: 15px;
   line-height: 1.6;
-  color: #00ad5f;
+  color: #ff9000;
 }
 
 /*==================================================================
@@ -326,7 +330,7 @@ textarea.input100 {
   min-width: 200px;
   height: 50px;
   border-radius: 2px;
-  background: #00ad5f;
+  background: #ff9000 ;
 
   font-size: 12px;
   color: #fff;

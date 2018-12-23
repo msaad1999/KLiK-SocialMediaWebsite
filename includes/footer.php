@@ -1,39 +1,45 @@
 
-                <div id="footer" class="cf">
-                    
-                    <div class="column three"> 
-                        <strong>Phone</strong><br>
-                        2121.21212.121
-                    </div>
-                    
-                    <div class="column three"> 
-                        <strong>Location</strong><br>
-                        Isalamabad Asia<br>
-                        honululu, IS 
-                    </div>
-                    
-                    <div class="column three last"> 
-                        <strong>Hours</strong>
-                        <em>Tuesday - Thursday</em><br>
-                        1:00pm - 9:00pm<br><br>
-                        
-                        <em>Friday - Saturday</em><br>
-                        4:00pm - 11:00pm<br><br>
-                        
-                        <em>Sunday - Monday</em><br>
-                        Closed<br><br>
-                     
-                        <?php include 'includes/store-hours.php'; ?>
-                    </div>
-                    
+<br><br><br><br>
+<footer id="myFooter" class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2 class="logo"><a href="index.php"><img src='img/200.png'></a></h2>
                 </div>
-                
-                <small>&copy; <?php echo date('Y'); ?> <?php echo $companyName  ; ?></small>
+                <div class="col-sm-2">
+                    <h5>Get started</h5>
+                    <ul>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="team.php">The Team</a></li>
+                        <li><a href="forum.php">The KLiK Forum</a></li>
+                        <li><a href="hub.php">The KLiK Hub</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <h5>About us</h5>
+                    <ul>
+                        <li><a href="_klik creators/klik_saad.php">Muhammad Saad</a></li>
+                        <li><a href="_klik creators/klik_anas-imran.php">Anas Imran</a></li>
+                        <li><a href="_klik creators/klik_anas-kamal.php">Anas Kamal</a></li>
+                        <li><a href="_klik creators/klik_ubaid.php">Ubaid Asim</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="contact.php">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <div class="social-networks">
+                        <a href="https://github.com/msaad1999/KLiK--PHP-coded-Social-Media-Website" 
+                           class="twitter"><i class="fa fa-github fa-2x"></i></a>
+                    </div>
+                    <a class="btn btn-default" href="contact.php">Contact us</a>
+                </div>
             </div>
         </div>
-        
-        <div class="copyright-info">
-            <?php include('includes/copyright.php'); ?> 
-            </div>
-    </body>
-</html>
+        <div class="footer-copyright">
+            <p>Copyright &copy; <script>document.write(new Date().getFullYear());</script> All Rights Reserved </p>
+        </div>
+    </footer>

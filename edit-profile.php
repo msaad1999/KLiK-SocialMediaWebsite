@@ -2,7 +2,8 @@
 
     session_start();
     require 'includes/dbh.inc.php';
-    define('TITLE',"Inbox | KLiK");
+    
+    define('TITLE',"Edit Profile | KLiK");
     
     if(!isset($_SESSION['userId']))
     {
@@ -10,30 +11,22 @@
         exit();
     }
     
-    include 'includes/HTML-head.php';   
-    include 'includes/navbar.php';
+    include 'includes/HTML-head.php';  
 ?> 
+</head>
+<body>
 
-
+    <?php include 'includes/navbar.php'; ?>
       <div class="container">
         <div class="row">
-          <div class="col-sm-3">
-            <div class='card card-profile text-center'>
-                        <img alt='' class='card-img-top' src='img/banner.png'>
-                        <div class='card-block'>
-                            <a href='profile.php'>
-                            <img src='uploads/<?php echo $_SESSION["userImg"] ?>' class='card-img-profile'></a>
-                            <h4 class='card-title'>
-                              <?php echo strtoupper($_SESSION['userUid']); ?>
-                              <small class="text-muted"><?php echo $_SESSION['f_name']." ".$_SESSION['l_name']; ?></small>
-                              <br><small class="text-muted"><?php echo $_SESSION['headline']; ?></small>
-                            </h4>
-                        </div>
-                    </div>
-          </div>
-          <div class="col-sm-7 text-center" id="user-section">
+            <div class="col-sm-3">
+            
+                <?php include 'includes/profile-card.php'; ?>
+                
+            </div>
+        <div class="col-sm-8 text-center" id="user-section">
               
-              <img class="cover-img" id='blah-cover' src="img/banner.png">
+              <img class="cover-img" id='blah-cover' src="img/user-cover.png">
               
               <form action="includes/profileUpdate.inc.php" method='post' enctype="multipart/form-data"
                     style="padding: 0 30px 0 30px;">
@@ -128,7 +121,7 @@
               
               
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-1">
             
           </div>
         </div>
@@ -137,8 +130,13 @@
       </div> <!-- /container -->
 
 
+<?php include 'includes/footer.php'; ?>
 
+                            
 
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+        
                             <script>
                                 var dp = '<?php echo $_SESSION["userImg"]; ?>';
                                 
@@ -164,5 +162,6 @@
                                   
                                   
                             </script>
-
-<?php include 'includes/HTML-footer.php'; ?>
+        
+    </body>
+</html>

@@ -10,23 +10,115 @@
     }
     include 'includes/HTML-head.php';
 ?>  
-
+    </head>
+    
+    <body>
 
         
         <div id="signup">
             <div class="container">
                 <div class="row">
-                    <div class="col-sm-6 offset-sm-1 position-fixed">
+                    <div class="col-sm-6 offset-sm-1">
                         
-                        <form id="signup-form" action="includes/signup.inc.php" method='post' enctype="multipart/form-data">
+                        <div class="signup-left position-fixed text-center">
+                            
+                            <img src="img/200.png">
+                            <br><br><br>
+                            <?php
+                            
+                                if(isset($_GET['error']))
+                                {
+                                    if($_GET['error'] == 'emptyfields')
+                                    {
+                                        echo '<div class="alert alert-danger" role="alert">
+                                                <strong>Error: </strong> Fill In All The Fields
+                                              </div>';
+                                    }
+                                    else if ($_GET['error'] == 'invalidmailuid')
+                                    {
+                                        echo '<div class="alert alert-danger" role="alert">
+                                                <strong>Error: </strong> Please enter a valid email and user name
+                                              </div>';
+                                    }
+                                    else if ($_GET['error'] == 'invalidmail')
+                                    {
+                                        echo '<div class="alert alert-danger" role="alert">
+                                                <strong>Error: </strong> Please enter a valid email
+                                              </div>';
+                                    }
+                                    else if ($_GET['error'] == 'invaliduid')
+                                    {
+                                        echo '<div class="alert alert-danger" role="alert">
+                                                <strong>Error: </strong> Please enter a valid user name
+                                              </div>';
+                                    }
+                                    else if ($_GET['error'] == 'passwordcheck')
+                                    {
+                                        echo '<div class="alert alert-danger" role="alert">
+                                                <strong>Error: </strong> Passwords donot match
+                                              </div>';
+                                    }
+                                    else if ($_GET['error'] == 'usertaken')
+                                    {
+                                        echo '<div class="alert alert-danger" role="alert">
+                                                <strong>Error: </strong> This User name is already taken
+                                              </div>';
+                                    }
+                                    else if ($_GET['error'] == 'invalidimagetype')
+                                    {
+                                        echo '<div class="alert alert-danger" role="alert">
+                                                <strong>Error: </strong> Invalid image type 
+                                              </div>';
+                                    }
+                                    else if ($_GET['error'] == 'imguploaderror')
+                                    {
+                                        echo '<div class="alert alert-danger" role="alert">
+                                                <strong>Error: </strong> Image upload error, please try again
+                                              </div>';
+                                    }
+                                    else if ($_GET['error'] == 'imgsizeexceeded')
+                                    {
+                                        echo '<div class="alert alert-danger" role="alert">
+                                                <strong>Error: </strong> Image too large
+                                              </div>';
+                                    }
+                                    else if ($_GET['error'] == 'sqlerror')
+                                    {
+                                        echo '<div class="alert alert-danger" role="alert">
+                                                <strong>Website Error: </strong> Contact admin to have the issue fixed
+                                              </div>';
+                                    }
+                                }
+                                else if (isset($_GET['signup']) == 'success')
+                                {
+                                    echo '<div class="alert alert-success" role="alert">
+                                            <strong>Signup Successful</strong> Please Login from the login menu
+                                          </div>';
+                                }
+                            ?>
+                            <form id="signup-form" action="includes/signup.inc.php" method='post' 
+                                  enctype="multipart/form-data">
                         
-                        <input type="submit" class="btn btn-lg btn-primary" name="signup-submit" value="signup">
+                                <input type="submit" class="btn btn-light btn-lg" name="signup-submit" value="Signup">
+                                
+                                <br><br>
+                                
+                                    <a  href="login.php">
+                                        <i class="fa fa-sign-in fa-2x social-icon" aria-hidden="true"></i>
+                                    </a> 
+                                    <a href="contact.php">
+                                        <i class="fa fa-envelope fa-2x social-icon" aria-hidden="true"></i>
+                                    </a>
+                                
+                            
+                        </div>
+                        
                         
                     </div>
                     
                     <div class="col-sm-6 offset-sm-6 text-center">
                         
-                        <h1 class="mt-5">Signup and Lets Go!</h1>
+                        <h1 class="mt-5 text-muted">Signup and Lets Go!</h1>
                         <br><br><br>
                         
                         
@@ -105,6 +197,11 @@
         
         
         
+                            
+                            
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js" ></script>
+        
                             <script>
                                 $('#blah').attr('src', 'uploads/default.png');
                                 function readURL(input) {
@@ -126,7 +223,6 @@
                                   
                                   
                             </script>
-                            
-         
-<?php include include 'includes/HTML-footer.php'; ?>
-
+        
+    </body>
+</html>

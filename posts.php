@@ -2,7 +2,8 @@
 
     session_start();
     require 'includes/dbh.inc.php';
-    define('TITLE',"Inbox | KLiK");
+    
+    define('TITLE',"Forum | KLiK");
     
     if(!isset($_SESSION['userId']))
     {
@@ -19,32 +20,18 @@
         header("Location: index.php");
         exit();
     }
+    
+    include 'includes/HTML-head.php';
 ?> 
 
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta name="description" content="An Information Pool System" />
-        <meta name="keywords" content="put, keywords, here" >
-        
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.min.js" ></script>
-        <title><?php echo TITLE; ?></title>
-        
-        <link href="css/bootstrap.min.css" rel="stylesheet"> 
-        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet"> 
-        <link href="css/styles.css" rel="stylesheet">
         <link href="css/forum-styles.css" rel="stylesheet">
-        
-        <link rel="shortcut icon" href="img/logo.ico" />
     </head>
+    
 <body>
 
-
-<?PHP include 'includes/navbar.php'; ?>
-
 <?php
+
+    include 'includes/navbar.php';
 
     if (isset($_POST['submit-reply']))
     {
@@ -68,8 +55,6 @@
             }
         }
     }
-    
-    // ------------------------------------------------------
     
     
     $sql = "select * from topics, categories where topic_id=? "
@@ -101,11 +86,11 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Forums</a></li>
-                <li class="breadcrumb-item"><a href="#"><?php echo $forum['cat_name']; ?></a></li>
+                <li class="breadcrumb-item"><a href="#"><?php echo ucwords($forum['cat_name']); ?></a></li>
             </ol>
         </nav>
         <div class="card post-header text-center">
-            <h1><?php echo $forum['topic_subject']; ?></h1>
+            <h1><?php echo ucwords($forum['topic_subject']); ?></h1>
         </div>
     </div>
     <div class="col-sm-12">
@@ -247,8 +232,8 @@
                         echo            '</div>
                                     </div>
                                 </div>
-                                <span class="likes"><span class="span-post-no"><a href="">Like</a></span> <span class="span-post-no"><a
-                                        href="">Quote</a></span></span>
+                                <span class="likes"><span class="span-post-no"></span> <span class="span-post-no"><a
+                                        href="">KLiK Forum</a></span></span>
                             </div>';
                                             
                         $i++;
@@ -267,12 +252,16 @@
                 <div class="form-group">
                     <textarea name="reply-content" class="form-control" id="reply-form" rows="7"></textarea>
                 </div>
-                <input type="submit" value="Submit reply" class="btn btn-primary" name="submit-reply">
+                <input type="submit" value="Submit reply" class="btn btn-lg btn-dark" name="submit-reply">
             </fieldset>
         </form>
     </div>
 </div>
     
+    <?php include 'includes/footer.php'; ?>
     
     
-<?php include 'includes/HTML-footer.php'; ?>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js" ></script>
+    </body>
+</html>

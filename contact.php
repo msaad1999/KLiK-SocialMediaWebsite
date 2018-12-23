@@ -3,30 +3,22 @@
     session_start();
     define('TITLE',"Contact Us | KLiK");
     
-    if(!isset($_SESSION['userId']))
-    {
-        header("Location: login.php");
-        exit();
-    }
-    include 'includes/navbar.php';
+    include 'includes/HTML-head.php';
 ?>  
 
-<!DOCTYPE html>
-<head>
-	<title><?php echo TITLE; ?></title>
-        
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="css/styles.css">
 	<link rel="stylesheet" type="text/css" href="css/contact-util.css">
 	<link rel="stylesheet" type="text/css" href="css/contact-main.css">
-        
-        <link rel="shortcut icon" href="img/logo.ico">
 </head>
+    
 <body>
 
     
     <?php
+    
+        if(isset($_SESSION['userId']))
+        {
+            include 'includes/navbar.php';
+        }
         
         use PHPMailer\PHPMailer\PHPMailer;
         use PHPMailer\PHPMailer\Exception; 
@@ -43,14 +35,24 @@
     
         if (isset($_POST['contact_submit'])){
             
-            $name = trim($_POST['first-name']).' '.trim($_POST['last-name']);
-            $email = trim($_POST['email']);
+            
+            
+            if(!isset($_SESSION['userId']))
+            {
+                $email = trim($_POST['email']);
+                $name = trim($_POST['first-name']).' '.trim($_POST['last-name']);
+            }
+            else
+            {
+                $email = trim($_SESSION['emailUsers']);
+                $name = 'User: '.$_SESSION['userUid'];
+            }
+            
             $msg = $_POST['message'];
             
             
-            // check if name / mail (fields) have header injection
             if (has_header_injection($name) || has_header_injection($email)){
-                die(); // kill the script immediately
+                die(); 
             }
             
             if (! $name || ! $email || ! $msg){
@@ -60,28 +62,22 @@
             }
             
             
+            $to = $email;
             
-            // add the recipient email to a variable
-            $to = "saad01.1999@gmail.com";
-            
-            // create a subject
             $subject = "$name sent you a message via your contact form";
             
-            // create message
-            $message = "<strong>Name:</strong> $name<br>" # \r\n is a line break
+            $message = "<strong>Name:</strong> $name<br>" 
                     . "<strong>Email:</strong> <i>$email</i><br><br>"
                     . "<strong>Message:</strong><br><br>$msg";
             
-            // check if subscribe checkbox was checked
-            if (isset($_POST['subscribe'])){
-                
-                // add new line to message variable
+            if (isset($_POST['subscribe']))
+            {
                 $message .= "<br><br><br>"
-                        . "<strong>IMPORTANT:</strong> Please add <i>$email</i> "
-                        . "to your mailing list.<br>";
+                            . "<strong>IMPORTANT:</strong> Please add <i>$email</i> "
+                            . "to your mailing list.<br>";
             }
             
-            // send the email (used PHPMailer since mail() does not send email on localhost in WIINDOWS
+            
             $mail = new PHPMailer(true);            
             
             try {
@@ -97,8 +93,8 @@
                 $mail->Port = 587;                                    // TCP port to connect to
                 
                 //Recipients
-                $mail->setFrom($to, "Franklin's Fine Dining");
-                $mail->addAddress('muhammadsaad.crytek@gmail.com', "Franklin's Fine Dining");     // Add a recipient
+                $mail->setFrom($to, "KLiK incorporated");
+                $mail->addAddress('saad01.1999@gmail.com', "KLiK incorporated");     // Add a recipient
 
                 //Content
                 $mail->isHTML(true);                                  // Set email format to HTML
@@ -121,7 +117,12 @@
 					Send Us A Message
 				</span>
 
-				<label class="label-input100" for="first-name">Tell us your name *</label>
+                                <?php 
+                                    if(!isset($_SESSION['userId']))
+                                    {
+                                ?>
+                            
+                                <label class="label-input100" for="first-name">Tell us your name *</label>
 				<div class="wrap-input100 rs1-wrap-input100 validate-input" data-validate="Type first name">
 					<input id="first-name" class="input100" type="text" name="first-name" placeholder="First name">
 					<span class="focus-input100"></span>
@@ -130,19 +131,24 @@
 					<input class="input100" type="text" name="last-name" placeholder="Last name">
 					<span class="focus-input100"></span>
 				</div>
-
-				<label class="label-input100" for="email">Enter your email *</label>
+                                
+                                <label class="label-input100" for="email">Enter your email *</label>
 				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 					<input id="email" class="input100" type="text" name="email" placeholder="Eg. example@email.com">
 					<span class="focus-input100"></span>
 				</div>
                                 
-                                <div class="checkbox-animated">
+                                <?php
+                                    }
+                                ?>
+				
+                                
+                                <div class="checkbox-animated my-4">
                                     <input id="checkbox_animated_1" type="checkbox" name="subscribe" value="subscribe">
                                     <label for="checkbox_animated_1">
                                         <span class="check"></span>
                                         <span class="box"></span>
-                                        Subscribe to Newsletter
+                                        Subscribe for Updates
                                     </label>
                                 </div>
 
@@ -161,7 +167,7 @@
 				</div>
 			</form>
 
-			<div class="contact100-more flex-col-c-m" style="background-image: url('img/banner.png');">
+			<div class="contact100-more flex-col-c-m" style="background-image: url('img/contact.jpg');">
 				<div class="flex-w size1 p-b-47">
 					<div class="txt1 p-r-25">
 						<span class="lnr lnr-map-marker"></span>
@@ -169,11 +175,12 @@
 
 					<div class="flex-col size2">
 						<span class="txt1 p-b-20">
-							Address
+							About Us
 						</span>
 
 						<span class="txt2">
-							Mada Center 8th floor, 379 Hudson St, New York, NY 10018 US
+                                                    University Students stumbling onto new ambitions<br>
+                                                    NUST, Islamabad Pakistan
 						</span>
 					</div>
 				</div>
@@ -185,11 +192,11 @@
 
 					<div class="flex-col size2">
 						<span class="txt1 p-b-20">
-							Lets Talk
+							Star Our Work
 						</span>
 
 						<span class="txt3">
-							+1 800 1236879
+							github.com/msaad1999/KLiK--PHP-coded-Social-Media-Website
 						</span>
 					</div>
 				</div>
@@ -205,21 +212,22 @@
 						</span>
 
 						<span class="txt3">
-							contact@example.com
+							klik.official.website@gmail.com
 						</span>
 					</div>
 				</div>
+                            <?php
+                                if(!isset($_SESSION[userId]))
+                                {
+                                    echo '<a class="contact100-form-btn" href="login.php">Login Page</a>';
+                                }
+                            ?>
 			</div>
 		</div>
 	</div>
 
-	<div id="dropDownSelect1"></div>
-
         
-        
-        
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/contact-main.js"></script>
-    </body>
-</html>
+        <?php include 'includes/footer.php'; ?>
+        <script src="js/contact-main.js"></script>
+	
+<?php include 'includes/HTML-footer.php' ?>

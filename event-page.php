@@ -1,46 +1,143 @@
 <?php
-    define('TITLE',"Forum | Franklin's Fine Dining");
-    include 'includes/header.php';
+
+    session_start();
+    require 'includes/dbh.inc.php';
+    define('TITLE',"Event | KLiK");
     
-    if (isset($_GET['event']))
+    if(!isset($_SESSION['userId']))
     {
-        $event = strip_bad_chars($_GET['event']);
-    }
-?>
-
-<hr>
-
-
-<?php
-
-    
-    
-
-    $sql = "select * from event_info where event=?;";
-    $stmt = mysqli_stmt_init($conn);    
-    
-    if (!mysqli_stmt_prepare($stmt, $sql))
-    {
-        header("Location: ../events.php?error=sqlerror");
+        header("Location: login.php");
         exit();
+    }
+    
+    if(isset($_GET['id']))
+    {
+        $eventId = $_GET['id'];
     }
     else
     {
-        mysqli_stmt_bind_param($stmt, "s", $event);
-        mysqli_stmt_execute($stmt);
-        $result = mysqli_stmt_get_result($stmt);
+        header("Location: index.php");
+        exit();
+    } 
+    
+    include 'includes/HTML-head.php';
+?> 
+
+        <link href="css/flipclock.css" rel="stylesheet">
+    </head>
+    
+    <body>
         
-        $row = mysqli_fetch_assoc($result);
-        echo "<h1>".$row['title']."</h1>";
-        echo "<h2>".$row['headline']."</h2>"
-           . "<h5>".$row['description']."</h5>";
-    }
+        <?php include 'includes/navbar.php'; ?>    
 
-?>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
 
-<a href="./events.php" class="button previous">View Events</a>
-<br>
-<a href="./add_event.php" class="button previous">Add Another Event</a>
-<hr>
+                    <?php include 'includes/profile-card.php'; ?>
+
+                </div>
+
+                <div class="col-sm-9" id="user-section">
+
+                    <?php
+
+                        $sql = "select * from events, event_info, users 
+                                where events.event_id = ? 
+                                and events.event_by = users.idUsers
+                                and events.event_id = event_info.event";
+
+                        $stmt = mysqli_stmt_init($conn);    
+
+                        if (!mysqli_stmt_prepare($stmt, $sql))
+                        {
+                            die('SQL error');
+                        }
+                        else
+                        {
+                            mysqli_stmt_bind_param($stmt, "s", $eventId);
+                            mysqli_stmt_execute($stmt);
+                            $result = mysqli_stmt_get_result($stmt);
+
+                            $row = mysqli_fetch_assoc($result);
+
+                            $date1 = date_create(date("Y-m-d"));
+                            $date2 = date_create($row['event_date']);
+
+                            $diff=date_diff($date1,$date2, absolute);
+
+                            $diff_sec = $diff->format('%r').( 
+                                            ($diff->s)+ 
+                                            (60*($diff->i))+ 
+                                            (60*60*($diff->h))+ 
+                                            (24*60*60*($diff->d))+ 
+                                            (30*24*60*60*($diff->m))+ 
+                                            (365*24*60*60*($diff->y)) 
+                                            );      
+                        }
+                    ?>
+
+                    <img class="blog-cover" src="uploads/<?php echo $row['event_image']; ?>">
+
+                    <img class="blog-author" src="uploads/<?php echo $row['userImg']; ?>">
+
+                    <div class="px-5">
+                        <div class="text-center px-5">
+
+                            <br><br><br>
+                            <h1><?php echo ucwords($row['title']) ?></h1>
+                            <h6 class="text-muted"><?php echo ucwords($row['headline']) ?></h6>
+                            <br><br><br>
+
+                            <h3>Event Countdown</h3>
+                            <br>
+
+                            <div class="clock" style="margin-left:5%;"></div>
+                            <div class="message"></div>
+                            <br><br><br>
+
+                            <p class="text-justify"><?php echo $row['description'] ?></p>
+
+                            <br><br>
+                            <p class="text-muted text-left">Organized By: <?php echo ucwords($row['uidUsers']); ?></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
 
 <?php include 'includes/footer.php'; ?>
+        
+
+        
+        <script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+        <script src="js/flipclock.js"></script>	
+        
+        <script type="text/javascript">
+		var clock;
+		
+		$(document).ready(function() {
+			var clock;
+
+			clock = $('.clock').FlipClock({
+		        clockFace: 'DailyCounter',
+		        autoStart: false,
+		        callbacks: {
+		        	stop: function() {
+		        		$('.message').html('<br><h1 class="text-success">The Event is Happening!</h1>')
+		        	}
+		        }
+		    });
+				    
+		    clock.setTime(<?php echo $diff_sec ?>);
+		    clock.setCountdown(true);
+		    clock.start();
+
+		});
+	</script>
+        
+    </body>
+</html>

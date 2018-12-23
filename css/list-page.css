@@ -28,7 +28,7 @@ body {
 }
 .text-white-50 { color: rgba(255, 255, 255, .5); }
 
-.bg-purple { background-color: #6f42c1; }
+.bg-purple { background-color: #B0B0B0; }
 
 .lh-100 { line-height: 1; }
 .lh-125 { line-height: 1.25; }
@@ -58,4 +58,21 @@ a {
 
 a:hover {
     color: #ff9000;
+}
+
+
+.bloglist-cover {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.blogindex-cover {
+    width: 150px;
+    height: 180px;
+    object-fit: cover;
+}
+
+.list-user-img {
+    border-radius: 50%;
 }

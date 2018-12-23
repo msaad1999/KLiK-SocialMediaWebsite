@@ -1,33 +1,26 @@
 <?php
 
     session_start();
-    define('TITLE',"Contact Us | KLiK");
+    
+    define('TITLE',"Create Category | KLiK");
     
     if(!isset($_SESSION['userId']))
     {
         header("Location: login.php");
         exit();
     }
-    include 'includes/navbar.php';
+    
+    include 'includes/HTML-head.php';
 ?>  
 
-<!DOCTYPE html>
-<head>
-	<title><?php echo TITLE; ?></title>
-        
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="css/styles.css">
         <link rel="stylesheet" type="text/css" href="css/comp-creation.css">
-        
-        <link rel="shortcut icon" href="img/logo.ico">
 </head>
-<body>
 
+<body>
     
+    <?php include 'includes/navbar.php'; ?>
     
-    
-    <div class="bg-contact2" style="background-image: url('img/banner.png');">
+    <div class="bg-contact2" style="background-image: url('img/black-bg.jpg');">
 		<div class="container-contact2">
 			<div class="wrap-contact2">
 				<form class="contact2-form" method="post" action="includes/create-category.inc.php">

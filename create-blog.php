@@ -1,33 +1,25 @@
 <?php
 
     session_start();
-    define('TITLE',"Hub | KLiK");
+    define('TITLE',"Create Blog | KLiK");
     
     if(!isset($_SESSION['userId']))
     {
         header("Location: login.php");
         exit();
     }
-    include 'includes/navbar.php';
+    
+    include 'includes/HTML-head.php';
 ?>  
-
-<!DOCTYPE html>
-<head>
-	<title><?php echo TITLE; ?></title>
-        
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="css/styles.css">
         <link rel="stylesheet" type="text/css" href="css/comp-creation.css">
-        
-        <link rel="shortcut icon" href="img/logo.ico">
 </head>
+
 <body>
 
+    <?php include 'includes/navbar.php'; ?>
     
     
-    
-    <div class="bg-contact2" style="background-image: url('img/banner.png');">
+    <div class="bg-contact2" style="background-image: url('img/black-bg.jpg');">
 		<div class="container-contact2">
                     
                     
@@ -108,9 +100,9 @@
         
         
                             <script>
-                                var dp = '<?php echo $_SESSION["userImg"]; ?>';
+                                var dp = 'img/blog-cover.png';
                                 
-                                $('#blah').attr('src', 'uploads/'+ dp);
+                                $('#blah').attr('src', dp);
                                 
                                 function readURL(input) {
 

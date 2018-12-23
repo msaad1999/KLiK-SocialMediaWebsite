@@ -12,6 +12,8 @@
 	<link href="../css/creator-responsive.css" rel="stylesheet">
         
         <link href="../css/creator-portfolio.min.css" rel="stylesheet">
+        
+        <link rel="shortcut icon" href="../img/favicon.png" />
 	
 </head>
 <body>
@@ -55,7 +57,7 @@
 		</div><!-- container -->
 	</header>
 	
-    <section class="intro-section" style="background-image: url(img/anas-imran-cover.jpg);">
+    <section class="intro-section" style="background-image: url(img/anas-kamal-cover.jpg);">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-1 col-lg-2"></div>
@@ -69,11 +71,11 @@
                                                 
                                             <br><br>
 						<ul class="social-icons">
-							<li><a href="https://github.com/skamal16">
+							<li><a href="https://github.com/skamal16" target="_blank">
                                                                 <i class="fa fa-github"></i></a></li>
-							<li><a href="https://www.linkedin.com/in/syed-anas-kamal/">
+							<li><a href="https://www.linkedin.com/in/syed-anas-kamal/" target="_blank">
                                                                 <i class="fa fa-linkedin"></i></a></li>
-							<li><a href="https://web.facebook.com/syed.kamal.75/">
+							<li><a href="https://web.facebook.com/syed.kamal.75/" target="_blank">
                                                                 <i class="fa fa-facebook"></i></a></li>
 						</ul>
 					</div><!-- intro -->
@@ -201,7 +203,7 @@
             </div>
             <div class="row no-gutters">
               <div class="col-lg-6">
-                <a class="portfolio-item" href="https://www.nimun.com.pk">
+                <a class="portfolio-item" href="https://www.nimun.com.pk" target="_blank">
                   <span class="caption">
                     <span class="caption-content">
                       <h2>NIMUN'19</h2>
@@ -224,7 +226,7 @@
                 </a>
               </div>
               <div class="col-lg-6">
-                <a class="portfolio-item" href="https://github.com/skamal16/Mobile-Trainer-Board">
+                <a class="portfolio-item" href="https://github.com/skamal16/Mobile-Trainer-Board" target="_blank">
                   <span class="caption">
                     <span class="caption-content">
                       <h2>Electronic Sandbox</h2>
@@ -235,14 +237,14 @@
                 </a>
               </div>
               <div class="col-lg-6">
-                <a class="portfolio-item" href="#">
+                <a class="portfolio-item" href="https://github.com/msaad1999/KLiK--PHP-coded-Social-Media-Website">
                   <span class="caption">
                     <span class="caption-content">
-                      <h2>Workspace</h2>
-                      <p class="mb-0 text-white">A yellow workspace with some scissors, pencils, and other objects.</p>
+                      <h2>KLiK</h2>
+                      <p class="mb-0 text-white">A hand-coded PHP Social Media Website</p>
                     </span>
                   </span>
-                  <img class="img-fluid" src="img/nimun.png" alt="">
+                  <img class="img-fluid" src="img/KLIK.png" alt="">
                 </a>
               </div>
             </div>

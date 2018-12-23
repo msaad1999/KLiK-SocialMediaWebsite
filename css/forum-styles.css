@@ -87,7 +87,7 @@
 
 .date {
     margin: -1.3rem;
-    background: #4f5173;
+    background: #636363;
     color: #e6faff;
     margin-bottom: 1rem;
     padding-left: 1rem;
@@ -104,7 +104,7 @@
 }
 
 .likes {
-    background: #4f5173;
+    background: #636363;
     color: #e6faff;
     border-radius: .1rem;
     padding-left: 1rem;
@@ -170,12 +170,12 @@ li a {
 }
 
 .breadcrumb-item.active {
-    color: #c5deec;
+    color: #ff9000;
     font-weight: 600;
 }
 
 .breadcrumb {
-    background-color: #4f5173;
+    background-color: #636363;
     box-shadow: 3px 3px 10px 1px rgba(0, 0, 0, 0.1);
 }
 
@@ -223,7 +223,7 @@ textarea .form-control {
 }
 
 a .fa {
-    color: blue;
+    color: #ff9000;
 }
 
 a .fa-trash {
@@ -231,7 +231,7 @@ a .fa-trash {
 }
 
 a .fa:hover {
-    color: #709fea;
+    color: #FFC382;
 }
 
 .fa {

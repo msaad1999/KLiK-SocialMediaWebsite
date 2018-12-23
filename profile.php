@@ -2,7 +2,8 @@
 
     session_start();
     require 'includes/dbh.inc.php';
-    define('TITLE',"Inbox | KLiK");
+    
+    define('TITLE',"Profile | KLiK");
     
     if(!isset($_SESSION['userId']))
     {
@@ -19,18 +20,12 @@
         $userid = $_SESSION['userId'];
     }
     
-    include 'includes/HTML-head.php';   
-    include 'includes/navbar.php';
-    
-    
-    
     $sql = "select * from users where idUsers = ".$userid;
     $stmt = mysqli_stmt_init($conn);    
     
     if (!mysqli_stmt_prepare($stmt, $sql))
     {
-        header("Location: ../blogs.php?error=sqlerror");
-        exit();
+        die('SQL error');
     }
     else
     {
@@ -38,29 +33,25 @@
         $result = mysqli_stmt_get_result($stmt);
         $user = mysqli_fetch_assoc($result);
     }
+    
+    include 'includes/HTML-head.php';   
 ?> 
+</head>
 
+<body>
 
+    <?php include 'includes/navbar.php'; ?>
       <div class="container">
         <div class="row">
           <div class="col-sm-3">
-            <div class='card card-profile text-center'>
-                        <img alt='' class='card-img-top' src='img/banner.png'>
-                        <div class='card-block'>
-                            <a href='profile.php'>
-                            <img src='uploads/<?php echo $_SESSION["userImg"] ?>' class='card-img-profile'></a>
-                            <h4 class='card-title'>
-                              <?php echo strtoupper($_SESSION['userUid']); ?>
-                              <small class="text-muted"><?php echo $_SESSION['f_name']." ".$_SESSION['l_name']; ?></small>
-                              <br><small class="text-muted"><?php echo $_SESSION['headline']; ?></small>
-                            </h4>
-                        </div>
-                    </div>
+            
+              <?php include 'includes/profile-card.php'; ?>
+              
           </div>
             
             
-          <div class="col-sm-7 text-center" id="user-section">
-              <img class="cover-img" src="img/<?php echo $user['coverImg']; ?>">
+          <div class="col-sm-8 text-center" id="user-section">
+              <img class="cover-img" src="img/user-cover.png">
               <img class="profile-img" src="uploads/<?php echo $user['userImg']; ?>">
               
               <?php  
@@ -70,8 +61,8 @@
                     }
               ?>
               
-              <h2><?php echo strtoupper($user['userUid']); ?></h2>
-              <h6><?php echo strtoupper($user['f_name']) . " " . strtoupper($user['l_name']); ?></h6>
+              <h2><?php echo ucwords($user['uidUsers']); ?></h2>
+              <h6><?php echo ucwords($user['f_name']) . " " . ucwords($user['l_name']); ?></h6>
               <h6><?php echo '<small class="text-muted">'.$user['emailUsers'].'</small>'; ?></h6>
               
               <?php 
@@ -113,21 +104,38 @@
                         
                         echo '<div class="container">'
                                     .'<div class="row">';
-                        while ($row = mysqli_fetch_assoc($result))
-                        {       
-                                echo '<div class="col-sm-4" style="padding-bottom: 30px;">
-                                    <div class="card user-blogs">
-                                        <img class="card-img-top" src="uploads/'.$row['blog_img'].'" alt="Card image cap">
-                                        <div class="card-block">
-                                          <p class="card-title">'.$row['blog_title'].'</p>
-                                         <p class="card-text"><small class="text-muted">'
-                                         .date("F jS, Y", strtotime($row['blog_date'])).'</small></p>
-                                        </div>
-                                      </div>
-                                      </div>';
+                        
+                        $row = mysqli_fetch_assoc($result);
+                        if(empty($row))
+                        {
+                            echo '<div class="col-sm-4" style="padding-bottom: 30px;"></div>
+                                <div class="col-sm-4">
+                                    <img class="profile-empty-img" src="img/empty.png">
+                                  </div>
+                                  <div class="col-sm-4" style="padding-bottom: 30px;"></div>
+                                    </div>
+                                  </div>';
                         }
-                        echo '</div>'
-                                .'</div>';
+                        else
+                        {
+                            do
+                            {       
+                                    echo '<div class="col-sm-4" style="padding-bottom: 30px;">
+                                        <div class="card user-blogs">
+                                            <a href="blog-page.php?id='.$row['blog_id'].'">
+                                            <img class="card-img-top" src="uploads/'.$row['blog_img'].'" alt="Card image cap">
+                                            <div class="card-block p-2">
+                                              <p class="card-title">'.ucwords($row['blog_title']).'</p>
+                                             <p class="card-text"><small class="text-muted">'
+                                             .date("F jS, Y", strtotime($row['blog_date'])).'</small></p>
+                                            </div>
+                                            </a>
+                                          </div>
+                                          </div>';
+                            }while ($row = mysqli_fetch_assoc($result));
+                            echo '</div>'
+                                    .'</div>';
+                        }
                     }
               ?>
               
@@ -152,22 +160,38 @@
                         
                         echo '<div class="container">'
                                     .'<div class="row">';
-                        while ($row = mysqli_fetch_assoc($result))
+                        
+                        $row = mysqli_fetch_assoc($result);
+                        if(empty($row))
                         {
-                                echo '<div class="col-sm-4" style="padding-bottom: 30px;">
-                                    <a href="#">
-                                    <div class="card card-inverse-user-forums text-white">
-                                        <img class="card-img" src="img/banner.png" alt="Card image">
-                                        <div class="card-img-overlay">
-                                          <p class="card-title">'.substr($row['topic_subject'],0,20).'...</p>'.
-                                          '<small class="card-text">'.date("F jS, Y", strtotime($row['topic_date'])).'</small>
-                                        </div>
-                                      </div>
-                                      </div>
-                                      </a>';
+                            echo '<div class="col-sm-4" style="padding-bottom: 30px;"></div>
+                                <div class="col-sm-4">
+                                    <img class="profile-empty-img" src="img/empty.png">
+                                  </div>
+                                  <div class="col-sm-4" style="padding-bottom: 30px;"></div>
+                                    </div>
+                                  </div>';
                         }
-                        echo '</div>'
-                                .'</div>';
+                        else
+                        {
+                            do
+                            {
+                                echo '<div class="col-sm-4" style="padding-bottom: 30px;">
+                                        <div class="card user-blogs">
+                                            <a href="posts.php?topic='.$row['topic_id'].'">
+                                            <img class="card-img-top" src="img/forum-cover.png" alt="Card image cap">
+                                            <div class="card-block p-2">
+                                              <p class="card-title">'.ucwords($row['topic_subject']).'</p>
+                                             <p class="card-text"><small class="text-muted">'
+                                             .date("F jS, Y", strtotime($row['topic_date'])).'</small></p>
+                                            </div>
+                                            </a>
+                                          </div>
+                                          </div>';
+                            }while ($row = mysqli_fetch_assoc($result));
+                            echo '</div>'
+                                    .'</div>';
+                        }
                     }
               ?>
               
@@ -196,23 +220,38 @@
                         
                         echo '<div class="container">'
                                     .'<div class="row">';
-                        while ($row = mysqli_fetch_assoc($result))
-                        {   
-                                echo '<div class="col-sm-4" style="padding-bottom: 30px;">
-                                        <a href="#">
-                                        <div class="card card-inverse-user-pollvotes text-white">
-                                            <img class="card-img" src="img/banner.png" alt="Card image">
-                                            <div class="card-img-overlay">
-                                              <p class="card-title">'.substr($row['subject'],0,20).'...</p>'.
-                                              '<small class="card-text"><b>Poll by:</b> <em>'
-                                                    .strtoupper($row['uidUsers']).'</em></small>
-                                            </div>
-                                        </div>
-                                        </a>
-                                    </div>';
+                        
+                        $row = mysqli_fetch_assoc($result);
+                        if(empty($row))
+                        {
+                            echo '<div class="col-sm-4" style="padding-bottom: 30px;"></div>
+                                <div class="col-sm-4">
+                                    <img class="profile-empty-img" src="img/empty.png">
+                                  </div>
+                                  <div class="col-sm-4" style="padding-bottom: 30px;"></div>
+                                    </div>
+                                  </div>';
                         }
-                        echo '</div>'
-                                .'</div>';
+                        else
+                        {
+                            do
+                            {   
+                                echo '<div class="col-sm-4" style="padding-bottom: 30px;">
+                                        <div class="card user-blogs">
+                                            <a href="poll.php?poll='.$row['poll_id'].'">
+                                            <img class="card-img-top" src="img/poll-cover.png" alt="Card image cap">
+                                            <div class="card-block p-2">
+                                              <p class="card-title">'.ucwords($row['subject']).'</p>
+                                             <p class="card-text"><small class="text-muted">'
+                                             .date("F jS, Y", strtotime($row['created'])).'</small></p>
+                                            </div>
+                                            </a>
+                                          </div>
+                                          </div>';
+                            }while ($row = mysqli_fetch_assoc($result));
+                            echo '</div>'
+                                    .'</div>';
+                        }
                     }
               ?>
               
@@ -222,7 +261,7 @@
               
               
           </div>
-          <div class="col-sm-2">
+          <div class="col-sm-1">
             
           </div>
         </div>
@@ -230,7 +269,7 @@
 
       </div> <!-- /container -->
 
-
+<?php include 'includes/footer.php'; ?>
 
 
 

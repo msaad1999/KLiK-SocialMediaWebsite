@@ -1,32 +1,25 @@
-
 <?php
 
     session_start();
     require 'includes/dbh.inc.php';
-    define('TITLE',"Contact Us | KLiK");
     
-    include 'includes/navbar.php';
+    define('TITLE',"Categories | KLiK");
+    
+    include 'includes/HTML-head.php';
 ?>  
 
-<!DOCTYPE html>
-<head>
-	<title><?php echo TITLE; ?></title>
         
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="css/styles.css">
-	<link rel="stylesheet" type="text/css" href="css/list-page.css">
-        
-        <link rel="shortcut icon" href="img/logo.ico">
-</head>
+        <link rel="stylesheet" type="text/css" href="css/list-page.css">
+    </head>
+    
     <body style="background: #f1f1f1">
 
-    
+        <?php include 'includes/navbar.php'; ?>
    
 
         <main role="main" class="container">
       <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
-          <img class="mr-3" src="img/logo.png" alt="" width="48" height="48">
+          <img class="mr-3" src="img/200.png" alt="" width="48" height="48">
         <div class="lh-100">
           <h1 class="mb-0 text-white lh-100">KLiK Forums</h1>
           <small>Spreading Ideas</small>
@@ -62,7 +55,7 @@
                     
                     echo '<a href="topics.php?cat='.$row['cat_id'].'">
                         <div class="media text-muted pt-3">
-                            <img src="img/logo.png" alt="" class="mr-2 rounded div-img ">
+                            <img src="img/forum-cover.png" alt="" class="mr-2 rounded div-img ">
                             <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray ">
                               <strong class="d-block text-gray-dark">'.ucwords($row['cat_name']).'</strong></a>
                                   <br>'.$row['cat_description'].'
@@ -105,7 +98,7 @@
       </div>
     </main>
         
-        
+        <?php include 'includes/footer.php'; ?>
         
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

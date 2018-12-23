@@ -41,7 +41,7 @@ if (isset($_POST['create-blog-submit']))
             {
                 $id = $_SESSION['blog_id'];
                 
-                $FileNameNew = 'default.png';
+                $FileNameNew = 'blog-cover.png';
                 
                 require 'upload.inc.php';
                 

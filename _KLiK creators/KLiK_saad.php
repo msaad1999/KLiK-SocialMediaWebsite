@@ -12,6 +12,8 @@
 	<link href="../css/creator-responsive.css" rel="stylesheet">
         
         <link href="../css/creator-portfolio.min.css" rel="stylesheet">
+        
+        <link rel="shortcut icon" href="../img/favicon.png" />
 	
 </head>
 <body>
@@ -69,11 +71,11 @@
                                                 
                                             <br><br>
 						<ul class="social-icons">
-							<li><a href="https://github.com/msaad1999">
+							<li><a href="https://github.com/msaad1999" target="_blank">
                                                                 <i class="fa fa-github"></i></a></li>
-							<li><a href="https://www.facebook.com/saad.crytek">
+							<li><a href="https://www.facebook.com/saad.crytek" target="_blank">
                                                                 <i class="fa fa-linkedin"></i></a></li>
-							<li><a href="https://www.linkedin.com/in/muhammadsaadhussaini/">
+							<li><a href="https://www.linkedin.com/in/muhammadsaadhussaini/" target="_blank">
                                                                 <i class="fa fa-facebook"></i></a></li>
 						</ul>
 					</div><!-- intro -->
@@ -203,7 +205,7 @@
             </div>
             <div class="row no-gutters">
               <div class="col-lg-6">
-                <a class="portfolio-item" href="https://www.nimun.com.pk">
+                <a class="portfolio-item" href="https://www.nimun.com.pk" target="_blank">
                   <span class="caption">
                     <span class="caption-content">
                       <h2>NIMUN'19</h2>
@@ -215,7 +217,7 @@
                 </a>
               </div>
               <div class="col-lg-6">
-                <a class="portfolio-item" href="https://github.com/msaad1999/LOST--Java-2D-Game">
+                <a class="portfolio-item" href="https://github.com/msaad1999/LOST--Java-2D-Game" target="_blank">
                   <span class="caption">
                     <span class="caption-content">
                       <h2>LOST</h2>
@@ -226,7 +228,7 @@
                 </a>
               </div>
               <div class="col-lg-6">
-                <a class="portfolio-item" href="https://github.com/msaad1999/GREY--Python3-2D-Game">
+                <a class="portfolio-item" href="https://github.com/msaad1999/GREY--Python3-2D-Game" target="_blank">
                   <span class="caption">
                     <span class="caption-content">
                       <h2>GREY</h2>
@@ -237,14 +239,14 @@
                 </a>
               </div>
               <div class="col-lg-6">
-                <a class="portfolio-item" href="#">
+                <a class="portfolio-item" href="https://github.com/msaad1999/KLiK--PHP-coded-Social-Media-Website">
                   <span class="caption">
                     <span class="caption-content">
-                      <h2>Workspace</h2>
-                      <p class="mb-0 text-white">A yellow workspace with some scissors, pencils, and other objects.</p>
+                      <h2>KLiK</h2>
+                      <p class="mb-0 text-white">A hand-coded PHP Social Media Website</p>
                     </span>
                   </span>
-                  <img class="img-fluid" src="img/nimun.png" alt="">
+                  <img class="img-fluid" src="img/KLIK.png" alt="">
                 </a>
               </div>
             </div>

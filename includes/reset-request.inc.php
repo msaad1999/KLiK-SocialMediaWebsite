@@ -1,4 +1,5 @@
 <?php
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception; 
 if (isset($_POST['reset-request-submit']))
@@ -6,7 +7,7 @@ if (isset($_POST['reset-request-submit']))
     $selector = bin2hex(random_bytes(8));
     $token = random_bytes(32);
     
-    $url = "localhost/infopoolsystem/create-new-pwd.php?selector=" . $selector . "&validator=" . bin2hex($token);
+    $url = "localhost/klik/create-new-pwd.php?selector=" . $selector . "&validator=" . bin2hex($token);
     
     $expires = date("U") + 1800;
     
@@ -76,8 +77,8 @@ if (isset($_POST['reset-request-submit']))
                 $mail->Port = 587;                                    // TCP port to connect to
                 
                 //Recipients
-                $mail->setFrom('saad01.1999@gmail.com', "Franklin's Fine Dining");
-                $mail->addAddress($to, "Franklin's Fine Dining");     // Add a recipient
+                $mail->setFrom('saad01.1999@gmail.com', "KLiK incorporated");
+                $mail->addAddress($to, "KLiK incorporated");     // Add a recipient
 
                 //Content
                 $mail->isHTML(true);                                  // Set email format to HTML

@@ -12,6 +12,8 @@
 	<link href="../css/creator-responsive.css" rel="stylesheet">
         
         <link href="../css/creator-portfolio.min.css" rel="stylesheet">
+        
+        <link rel="shortcut icon" href="../img/favicon.png" />
 	
 </head>
 <body>
@@ -35,7 +37,7 @@
 							<i class="icon ion-ios-telephone-outline"></i>
 							<div class="right-area">
 								<h5>337-4139538</h5>
-                                                                <h6>Dont call, idk whose number is this</h6>
+                                                                <h6>Official Phone Number</h6>
 							</div><!-- right-area -->
 						</div><!-- info -->
 					</div><!-- col-sm-4 -->
@@ -44,7 +46,7 @@
 						<div class="info">
 							<i class="icon ion-ios-chatboxes-outline"></i>
 							<div class="right-area">
-								<h5>saad01.1999@gmail.com</h5>
+								<h5>mullah.bese17seecs@seecs.edu.pk</h5>
 								<h6>Official Email</h6>
 							</div><!-- right-area -->
 						</div><!-- info -->
@@ -61,12 +63,11 @@
 				<div class="col-md-1 col-lg-2"></div>
 				<div class="col-md-10 col-lg-8">
 					<div class="intro">
-                                            <div class="profile-img"><img src="img/saad.JPG" alt=""></div>
+                                            <div class="profile-img"><img src="img/ubaid.JPG" alt=""></div>
                                             <h2><b>Muhammad Ubaid Asim</b></h2><br>
                                             
-                                            <h5 class="font-yellow">"I am a professional Graphic Designer, 
-                                                I am a professional Graphic Designer, i am a -"<br>
-                                                (stop talking start treating)</h5>
+                                            <h4 class="font-yellow">The Border is not Black</h4>
+                                                <b class="text-muted">(He's talking about the logo)</b>
                                                 
                                             <br><br>
 						<ul class="social-icons">
@@ -96,17 +97,17 @@
 				
 				<div class="col-md-12 col-lg-6">
 				
-					<div class="line-progress margin-b-20" data-prog-percent="1.00"><div></div>
-                                            <p class="progress-title"><b>Being an idiot</b></p></div><br>
+					<div class="line-progress margin-b-20" data-prog-percent=".90"><div></div>
+                                            <p class="progress-title"><b>Brand Strategizing</b></p></div><br>
 					
 					<div class="line-progress margin-b-20" data-prog-percent=".70"><div></div>
-                                            <p class="progress-title"><b>Web Development</b></p></div><br>
+                                            <p class="progress-title"><b>Graphic Designing</b></p></div><br>
 
-					<div class="line-progress margin-b-20" data-prog-percent=".60"><div></div>
-                                            <p class="progress-title"><b>Software Development</b></p></div><br>
+					<div class="line-progress margin-b-20" data-prog-percent=".50"><div></div>
+                                            <p class="progress-title"><b>Android Development</b></p></div><br>
 					
-					<div class="line-progress margin-b-50" data-prog-percent=".50"><div></div>
-                                            <p class="progress-title"><b>Writing</b></p></div><br>
+					<div class="line-progress margin-b-50" data-prog-percent=".70"><div></div>
+                                            <p class="progress-title"><b>Social Media Marketing</b></p></div><br>
 
 				</div><!-- col-sm-6 -->
 				
@@ -153,27 +154,27 @@
 				</div><!-- col-sm-12 -->
 				<div class="col-sm-6 col-md-6 col-lg-3">
 					<div class="radial-prog-area margin-b-30">
-						<div class="radial-progress" data-prog-percent="-.55">
+						<div class="radial-progress" data-prog-percent="1.00">
 							<div></div>
-							<h6 class="progress-title">Acting like a Human</h6>
+							<h6 class="progress-title">Sneak</h6>
 						</div>
 					</div><!-- radial-prog-area-->
 				</div><!-- col-sm-6-->
 				
 				<div class="col-sm-6 col-md-6 col-lg-3">
 					<div class="radial-prog-area margin-b-30">
-						<div class="radial-progress" data-prog-percent=".70">
+						<div class="radial-progress" data-prog-percent=".50">
 							<div></div>
-							<h6 class="progress-title">Adaptability</h6>
+							<h6 class="progress-title">Speech</h6>
 						</div>
 					</div><!-- radial-prog-area-->
 				</div><!-- col-sm-6-->
 				
 				<div class="col-sm-6 col-md-6 col-lg-3">
 					<div class="radial-prog-area margin-b-30">
-						<div class="radial-progress" data-prog-percent=".70">
+						<div class="radial-progress" data-prog-percent=".80">
 							<div></div>
-							<h6 class="progress-title">Earnest Learning</h6>
+							<h6 class="progress-title">Destruction</h6>
 						</div>
 					</div><!-- radial-prog-area-->
 				</div><!-- col-sm-6-->
@@ -182,8 +183,7 @@
 					<div class="radial-prog-area margin-b-50">
 						<div class="radial-progress" data-prog-percent=".97">
 							<div></div>
-                                                        <h6 class="progress-title">Wasting Time<br>
-                                                            (and complaining <br>later)</h6>
+                                                        <h6 class="progress-title">Responsible</h6>
 						</div>
 					</div><!-- radial-prog-area-->
 				</div><!-- col-sm-6-->
@@ -208,11 +208,10 @@
                   <span class="caption">
                     <span class="caption-content">
                       <h2>NIMUN'19</h2>
-                      <p class="mb-0 text-white">Official website for the NUST International Model<br>
-                      United Nations (NIMUN'19)</p>
+                      <p class="mb-0 text-white">Director of Team Graphics</p>
                     </span>
                   </span>
-                  <img class="img-fluid" src="img/nimun.png" alt="">
+                  <img class="img-fluid" src="img/nimun2.png" alt="">
                 </a>
               </div>
               <div class="col-lg-6">
@@ -227,25 +226,25 @@
                 </a>
               </div>
               <div class="col-lg-6">
-                <a class="portfolio-item" href="https://github.com/msaad1999/GREY--Python3-2D-Game">
+                <a class="portfolio-item" href="">
                   <span class="caption">
                     <span class="caption-content">
-                      <h2>GREY</h2>
+                      <h2>Snake and Ladders</h2>
                       <p class="mb-0 text-white">A Python based 2D Game</p>
                     </span>
                   </span>
-                  <img class="img-fluid" src="img/grey.png" alt="">
+                  <img class="img-fluid" src="img/snake.png" alt="https://github.com/UbaidAsim/Snakes-N-Ladders">
                 </a>
               </div>
               <div class="col-lg-6">
-                <a class="portfolio-item" href="#">
+                <a class="portfolio-item" href="https://github.com/msaad1999/KLiK--PHP-coded-Social-Media-Website">
                   <span class="caption">
                     <span class="caption-content">
-                      <h2>Workspace</h2>
-                      <p class="mb-0 text-white">A yellow workspace with some scissors, pencils, and other objects.</p>
+                      <h2>klIk</h2>
+                      <p class="mb-0 text-white">A hand-coded PHP Social Media Website</p>
                     </span>
                   </span>
-                  <img class="img-fluid" src="img/nimun.png" alt="">
+                  <img class="img-fluid" src="img/klik.png" alt="">
                 </a>
               </div>
             </div>

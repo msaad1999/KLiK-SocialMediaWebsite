@@ -25,7 +25,7 @@
                     echo '<div class="outgoing_msg">
                             <div class="sent_msg">
                               <p>'.$message.'</p>
-                              <span class="time_date"> 11:01 AM    |    Today</span> </div>
+                            </div>
                           </div>';
                 }
                 else 
@@ -33,9 +33,10 @@
                     echo '<div class="incoming_msg">
                             <div class="incoming_msg_img"> <img class="chat_people_inbox_img" src="uploads/'.$user_form_img.'"> </div>
                              <div class="received_msg">
-                               <div class="received_withd_msg">
+                                <div class="received_withd_msg">
                                  <p>'.$message.'</p>
-                                 <span class="time_date"> 11:01 AM    |    June 9</span></div>
+                                     <br>
+                                </div>
                              </div>
                            </div>';
                 }
@@ -43,7 +44,10 @@
  
             }
         }else{
-            echo "No Messages";
+            echo "<div class='text-center'>
+                    <br>
+                    <img src='img/empty.png' style='width:500px;'>
+                </div>";
         }
     }
     
