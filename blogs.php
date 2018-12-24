@@ -6,6 +6,12 @@
     
     define('TITLE',"Blogs | KLiK");
     
+    if(!isset($_SESSION['userId']))
+    {
+        header("Location: login.php");
+        exit();
+    }
+    
     include 'includes/HTML-head.php';
     
 ?>  
@@ -54,7 +60,7 @@
                                             <i class="fa fa-thumbs-up" aria-hidden="true"></i> '.$row['blog_votes'].'
                                         </strong>
                                         <h3 class="mb-0">
-                                          <a class="text-dark" href="blog-page.php?id='.$row['blog_id'].'">'.$row['blog_title'].'</a>
+                                          <a class="text-dark" href="blog-page.php?id='.$row['blog_id'].'">'.substr($row['blog_title'],0,10).'...</a>
                                         </h3>
                                         <div class="mb-1 text-muted">'.date("F jS, Y", strtotime($row['blog_date'])).'</div>
                                         <p class="card-text mb-auto">'.substr($row['blog_content'],0,70).'...</p>

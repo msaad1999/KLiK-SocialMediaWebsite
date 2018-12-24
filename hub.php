@@ -4,6 +4,12 @@
     
     define('TITLE',"Hub | KLiK");
     
+    if(!isset($_SESSION['userId']))
+    {
+        header("Location: login.php");
+        exit();
+    }
+    
     include 'includes/HTML-head.php';
     include 'includes/navbar.php';
     

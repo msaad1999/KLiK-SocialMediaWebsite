@@ -66,8 +66,8 @@
                                             <div class="profile-img"><img src="img/saad.JPG" alt=""></div>
                                             <h2><b>Muhammad Saad Hussaini</b></h2><br>
                                             
-                                            <h4 class="font-yellow">What goes up, must come down</h4>
-                                                <b class="text-muted">(heard this outside his toilet cubicle)</b>
+                                            <h4 class="font-yellow">DED</h4>
+                                                <b class="text-muted">(seriously im ded somebody pls kill me ;_;)</b>
                                                 
                                             <br><br>
 						<ul class="social-icons">

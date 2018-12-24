@@ -66,8 +66,8 @@
                                             <div class="profile-img"><img src="img/ubaid.JPG" alt=""></div>
                                             <h2><b>Muhammad Ubaid Asim</b></h2><br>
                                             
-                                            <h4 class="font-yellow">The Border is not Black</h4>
-                                                <b class="text-muted">(He's talking about the logo)</b>
+                                            <h4 class="font-yellow">Freelance Graphic Designer</h4>
+                                                <b class="text-muted">(All rounder)</b>
                                                 
                                             <br><br>
 						<ul class="social-icons">
