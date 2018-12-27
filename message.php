@@ -59,7 +59,7 @@
                                 </div>
                               <div class="chat_ib">
                                 <h5>
-                                    <?php echo strtoupper($row['uidUsers']) ?> 
+                                    <?php echo ucwords($row['uidUsers']) ?> 
                                     <span class="chat_date">KLiK User</span>
                                 </h5>
                                 <p>Click on the User to start chatting</p>

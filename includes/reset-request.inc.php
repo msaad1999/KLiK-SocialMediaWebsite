@@ -71,14 +71,14 @@ if (isset($_POST['reset-request-submit']))
                 $mail->isSMTP();                                      // Set mailer to use SMTP
                 $mail->Host = 'smtp.gmail.com';                      // Specify main and backup SMTP servers
                 $mail->SMTPAuth = true;                               // Enable SMTP authentication
-                $mail->Username = 'saad01.1999@gmail.com';                                // SMTP username
-                $mail->Password = 'eldererajin Menji99';                           // SMTP password
+                $mail->Username = 'klik.official.website@gmail.com';                                // SMTP username
+                $mail->Password = 'dingydingdong69dingydong';                           // SMTP password
                 $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
                 $mail->Port = 587;                                    // TCP port to connect to
                 
                 //Recipients
-                $mail->setFrom('saad01.1999@gmail.com', "KLiK incorporated");
-                $mail->addAddress($to, "KLiK incorporated");     // Add a recipient
+                $mail->setFrom('klik.official.website@gmail.com', "KLiK inc.");
+                $mail->addAddress($to, "KLiK inc.");     // Add a recipient
 
                 //Content
                 $mail->isHTML(true);                                  // Set email format to HTML

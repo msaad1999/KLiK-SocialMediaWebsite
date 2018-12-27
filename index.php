@@ -103,7 +103,8 @@
                                                 from topics, users, categories 
                                                 where topics.topic_by = users.idUsers
                                                 and topics.topic_cat = categories.cat_id
-                                                order by topic_id desc, upvotes asc ";
+                                                order by topic_id desc, upvotes asc 
+                                                LIMIT 6";
                                         $stmt = mysqli_stmt_init($conn);    
 
                                         if (!mysqli_stmt_prepare($stmt, $sql))
@@ -227,7 +228,8 @@
                                                 where v.poll_id = p.id
                                                 ) as votes
                                             from polls p 
-                                            order by votes desc";
+                                            order by votes desc
+                                            LIMIT 5";
 
                                     $stmt = mysqli_stmt_init($conn);    
 

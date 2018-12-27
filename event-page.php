@@ -42,10 +42,12 @@
 
                     <?php
 
-                        $sql = "select * from events, event_info, users 
-                                where events.event_id = ? 
-                                and events.event_by = users.idUsers
-                                and events.event_id = event_info.event";
+                        $sql = "select e.event_date, e.event_id, e.event_by, e.title, e.event_image, i.description,
+                                    u.uidUsers, u.userImg, i.headline as e_headline
+                                from events e, event_info i, users u
+                                where e.event_id = ? 
+                                and e.event_by = u.idUsers
+                                and e.event_id = i.event";
 
                         $stmt = mysqli_stmt_init($conn);    
 
@@ -86,7 +88,8 @@
 
                             <br><br><br>
                             <h1><?php echo ucwords($row['title']) ?></h1>
-                            <h6 class="text-muted"><?php echo ucwords($row['headline']) ?></h6>
+                            <br>
+                            <h6 class="text-muted"><?php echo ucwords($row['e_headline']) ?></h6>
                             <br><br><br>
 
                             <h3>Event Countdown</h3>

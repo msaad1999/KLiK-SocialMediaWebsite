@@ -13,6 +13,8 @@
         
         <link href="../css/creator-portfolio.min.css" rel="stylesheet">
         
+        <link href="../css/footer.css" rel="stylesheet">
+        
         <link rel="shortcut icon" href="../img/favicon.png" />
 	
 </head>
@@ -253,11 +255,7 @@
         </section>
         
 	
-	<footer>
-		<p class="copyright">
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="">KLik</a>
-                </p>
-	</footer>
+	<?php include 'assets/footer.php'; ?>
 	
         
 	

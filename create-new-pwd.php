@@ -11,12 +11,11 @@
             <link rel="stylesheet" type="text/css" href="css/list-page.css">
     </head>
     
-    <body style="background: #f1f1f1">
+    <body style="background: url('img/cover2.png');">
 
-        <?php include 'includes/navbar.php'; ?>
    
 
-        <main role="main" class="container">
+        <main role="main" class="container mt-5">
       <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-purple rounded shadow-sm">
           <img class="mr-3" src="img/200.png" alt="" width="48" height="48">
         <div class="lh-100">
@@ -59,7 +58,7 @@
                         </div>
                         <br><br>
                         <div class="form-row">
-                            <input class="btn btn-primary btn-block" type="submit" class="button next" name="reset-password-submit" 
+                            <input class="btn btn-secondary btn-lg btn-block" type="submit" class="button next" name="reset-password-submit" 
                                value="Reset Password">
                         </div>
                         
@@ -69,12 +68,23 @@
                 }
             }
         ?>
-        
-        
-      </div>
+        </div>
+            
+            <br><br>
+            <div class="position-absolute login-icons text-center">
+                <a  href="login.php">
+                    <i class="fa fa-sign-in fa-2x social-icon" aria-hidden="true"></i>
+                </a> 
+                <a href="contact.php">
+                    <i class="fa fa-envelope fa-2x social-icon" aria-hidden="true"></i>
+                </a>
+                <a href="contact.php">
+                    <i class="fa fa-github fa-2x social-icon" aria-hidden="true"></i>
+                </a>
+            </div>
+            
     </main>
         
-        <?php include 'includes/footer.php'; ?>
         
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

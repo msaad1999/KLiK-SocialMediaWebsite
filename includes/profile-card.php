@@ -22,6 +22,7 @@
                         </small>
                         <br>
                         <small class="text-muted"><?php echo $_SESSION['headline']; ?></small>
+                        <br><br><br>
                     </h4>
                 </div>
             </div>

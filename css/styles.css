@@ -46,6 +46,7 @@ h1 {
     align-items: center;
 }
 
+
 #signup {
     background: url('../img/cover2.png') center center no-repeat;
     background-size: cover; 
@@ -65,11 +66,6 @@ h1 {
 
 .section-content {
     padding: 5rem 0;
-}
-
-#about {
-    background: url('img/girlincar.jpg') center center no-repeat;
-    background-size: cover;
 }
 
 .about-text {
