@@ -294,4 +294,4 @@ A huge thanks to the wonderful team without which this entire project would not 
 
 <img src="_git%20assets/me.png" width="150"/> | <img src="_git%20assets/kamal.png" width="150"/> | <img src="_git%20assets/ubaid.png" width="150"/> | <img src="_git%20assets/ait.png" width="150"/>
 ---|---|---|---
-[msaad1999](https://github.com/msaad1999) | [skamal16](https://github.com/skamal16) | [UbaidAsim](https://github.com/aitasadduq) | [aitasadduq](https://github.com/aitasadduq)
+[msaad1999](https://github.com/msaad1999) | [skamal16](https://github.com/skamal16) | [UbaidAsim](https://github.com/UbaidAsim) | [aitasadduq](https://github.com/aitasadduq)
