@@ -76,6 +76,13 @@ $SMTPtitle = "KLiK inc.";
 The database file already contains a lot of sample data and users. Most users in the database have the same password as their usernames except for a few. It is not possible to signup as an administrator through the application, since we decided that was an exploitable weakness. Therefore, you will have to create an account and manually go to the `users` table in the database to change the userLevel of that account to `1` from `0`.
 > 0 Level means a normal user and Level 1 means admin
 
+Existing `admin` user:
+```
+username: saad
+password: saad
+```
+> username can be changed directly from `phpMyAdmin` and the password can be changed from the `profile-editing` system
+
 A simple way to access all sample accounts without deleting them and hence losing all the sample data is to manually change their `email` from within phpMyAdmin to a valid email address. Then attempt login with that account using a wrong password, and use the provided `forgot password? link` to reset the accounts password. The account email can be safely changed again to anything trivial later on.
 
 
