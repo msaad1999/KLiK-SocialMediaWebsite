@@ -8,7 +8,7 @@
     {
         header("Location: login.php");
         exit();
-    }
+    } 
     
     include 'includes/HTML-head.php';
     include 'includes/navbar.php';
@@ -192,21 +192,9 @@
                               <span class="text-muted">Created By'.ucwords($row['uidUsers']).'</span><br>
                                   <span class="text-primary">'.$row['voters'].' user(s) voted</span>
                             </p>
-                            <span class="text-primary text-center">';
-                    
-                    if ($_SESSION['userLevel'] == 1 || $_SESSION['userId'] == $row['created_by'])
-                    {
-                        echo '<a href="includes/delete-forum.php?id='.$row['topic_id'].'&page=forum" >
-                                <i class="fa fa-trash" aria-hidden="true" style="color: red;"></i>
-                              </a>
-                            </span>';
-                    }
-                    else
-                    {
-                        echo '</span>';
-                    }
-                    echo '</span>
                             </div>';
+                    
+                    echo '';
                 }
            }
         ?>

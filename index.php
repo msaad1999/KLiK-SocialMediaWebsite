@@ -6,7 +6,6 @@
     define('TITLE',"Dashboard| KLiK");
 
     $companyName = "Franklin's Fine Dining";
-    include 'includes/arrays.php';
     
     function strip_bad_chars( $input ){
         $output = preg_replace( "/[^a-zA-Z0-9_-]/", "", $input);
@@ -113,7 +112,6 @@
                                         }
                                         else
                                         {
-                                            mysqli_stmt_bind_param($stmt, "s", $_SESSION['userId']);
                                             mysqli_stmt_execute($stmt);
                                             $result = mysqli_stmt_get_result($stmt);
 
@@ -174,7 +172,6 @@
                                         }
                                         else
                                         {
-                                            mysqli_stmt_bind_param($stmt, "s", $_SESSION['userId']);
                                             mysqli_stmt_execute($stmt);
                                             $result = mysqli_stmt_get_result($stmt);
 

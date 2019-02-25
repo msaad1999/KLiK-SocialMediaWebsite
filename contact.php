@@ -4,6 +4,7 @@
     define('TITLE',"Contact Us | KLiK");
     
     include 'includes/HTML-head.php';
+    include 'includes/email-server.php';
 ?>  
 
 	<link rel="stylesheet" type="text/css" href="css/contact-util.css">
@@ -81,23 +82,20 @@
             $mail = new PHPMailer(true);            
             
             try {
-                //Server settings
-                //$mail->SMTPDebug = 2;                                 // Enable verbose debug output
-                
-                $mail->isSMTP();                                      // Set mailer to use SMTP
-                $mail->Host = 'smtp.gmail.com';                      // Specify main and backup SMTP servers
-                $mail->SMTPAuth = true;                               // Enable SMTP authentication
-                $mail->Username = 'klik.official.website@gmail.com';                                // SMTP username
-                $mail->Password = 'dingydingdong69dingydong';              // SMTP password
-                $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-                $mail->Port = 587;                                    // TCP port to connect to
+                $mail->isSMTP();                                      
+                $mail->Host = 'smtp.gmail.com';                      
+                $mail->SMTPAuth = true;                              
+                $mail->Username = $SMTPuser;                              
+                $mail->Password = $SMTPpwd;             
+                $mail->SMTPSecure = 'tls';                           
+                $mail->Port = 587;                                    
                 
                 //Recipients
-                $mail->setFrom($to, "KLiK inc.");
-                $mail->addAddress('klik.official.website@gmail.com', "KLiK inc.");     // Add a recipient
+                $mail->setFrom($to, $SMTPtitle);
+                $mail->addAddress($SMTPuser, $SMTPtitle);     
 
                 //Content
-                $mail->isHTML(true);                                  // Set email format to HTML
+                $mail->isHTML(true);                                  
                 $mail->Subject = $subject;
                 $mail->Body    = $message;
  

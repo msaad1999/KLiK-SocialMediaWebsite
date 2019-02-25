@@ -1,8 +1,7 @@
 <?php
 
     session_start();
-    include_once 'dbh.inc.php';
-    define('TITLE',"KLiK");
+    define('TITLE',"KLiK"); 
     
     function strip_bad_chars( $input ){
         $output = preg_replace( "/[^a-zA-Z0-9_-]/", "", $input);
@@ -101,5 +100,8 @@
         </div>
     </section>
 
-
-<?php include include 'includes/HTML-footer.php'; ?>
+        
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js" ></script>
+    </body>
+</html>
