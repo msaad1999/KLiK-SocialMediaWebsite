@@ -1,6 +1,7 @@
 <?php
 
 $SMTPuser = 'klik.official.website@gmail.com';   
-$SMTPpwd = 'some-example-password'; 
+$SMTPpwd = 'dingydingdong69dingydong'; 
 $SMTPtitle = "KLiK inc.";
+$Domain = 'localhost';
 

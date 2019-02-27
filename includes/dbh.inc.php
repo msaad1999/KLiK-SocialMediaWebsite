@@ -2,7 +2,7 @@
 
 $serverName = "localhost";
 $dBUsername = "root";
-$dBPassword = "examplePassword";
+$dBPassword = "eldererajinMenji99";
 $dBName = "klik_database";
 
 $conn = mysqli_connect($serverName, $dBUsername, $dBPassword, $dBName, 3307);

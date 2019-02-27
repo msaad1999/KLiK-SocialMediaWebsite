@@ -215,7 +215,7 @@
 					</div>
 				</div>
                             <?php
-                                if(!isset($_SESSION[userId]))
+                                if(!isset($_SESSION['userId']))
                                 {
                                     echo '<a class="contact100-form-btn" href="login.php">Login Page</a>';
                                 }

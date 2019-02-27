@@ -1,6 +1,7 @@
 <?php
 
-include 'includes/email-server.php';
+include 'email-server.php';
+
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception; 
@@ -10,7 +11,7 @@ if (isset($_POST['reset-request-submit']))
     $selector = bin2hex(random_bytes(8));
     $token = random_bytes(32);
     
-    $url = "localhost/klik/create-new-pwd.php?selector=" . $selector . "&validator=" . bin2hex($token);
+    $url = $Domain . "/klik/create-new-pwd.php?selector=" . $selector . "&validator=" . bin2hex($token);
     
     $expires = date("U") + 1800;
     
@@ -71,14 +72,14 @@ if (isset($_POST['reset-request-submit']))
                 $mail->isSMTP();                                      
                 $mail->Host = 'smtp.gmail.com';                      
                 $mail->SMTPAuth = true;                               
-                $mail->Username = 'klik.official.website@gmail.com';                                
-                $mail->Password = 'dingydingdong69dingydong';                          
+                $mail->Username = $SMTPuser;            
+                $mail->Password = $SMTPpwd;  
                 $mail->SMTPSecure = 'tls';                            
                 $mail->Port = 587;                                   
                 
                 //Recipients
-                $mail->setFrom('klik.official.website@gmail.com', "KLiK inc.");
-                $mail->addAddress($to, "KLiK inc.");     
+                $mail->setFrom($SMTPuser, $SMTPtitle);
+                $mail->addAddress($to, $SMTPtitle);     
 
                 //Content
                 $mail->isHTML(true);                                  
