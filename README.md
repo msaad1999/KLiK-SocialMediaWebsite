@@ -64,13 +64,18 @@ if (!$conn)
   * `$SMTPuser` : email address on `gmail`
   * `$SMTPpwd` : email address password
   * `SMTPtitle` : hypothetical company's name
+  * `Domain` : Domain of the website, like localhost on local server or if on live domain, something like www.hypotheticalwebsite.com
 
 ```php
 $SMTPuser = 'klik.official.website@gmail.com';   
 $SMTPpwd = 'some-example-password';
 $SMTPtitle = "KLiK inc.";
+$Domain = 'localhost';
 ```
 > This step is mainly for setting up an email account to enable the `contact` and `password reset system`, all of which require mailing.
+
+> In the current stage of the application, only `Gmail` accounts are supported.
+
 
 #### Getting started
 The database file already contains a lot of sample data and users. Most users in the database have the same password as their usernames except for a few. It is not possible to signup as an administrator through the application, since we decided that was an exploitable weakness. Therefore, you will have to create an account and manually go to the `users` table in the database to change the userLevel of that account to `1` from `0`.
