@@ -22,6 +22,9 @@ SET time_zone = "+00:00";
 -- Database: `klik_database`
 --
 
+create DATABASE klik_database;
+use klik_database;
+
 -- --------------------------------------------------------
 
 --
