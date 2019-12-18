@@ -295,7 +295,7 @@ $sql = "select uidUsers from users where uidUsers=?;";
 
 ## The Team
 
-A huge thanks to the wonderful team without which this entire project would not have been possible. Check out their profiles and star their repos! :)
+A huge thanks to the wonderful team without which this entire project would not have been possible. Check out our profiles and star our repos! :)
 
 <img src="_git%20assets/me.png" width="150"/> | <img src="_git%20assets/kamal.png" width="150"/> | <img src="_git%20assets/ubaid.png" width="150"/> | <img src="_git%20assets/ait.png" width="150"/>
 ---|---|---|---
