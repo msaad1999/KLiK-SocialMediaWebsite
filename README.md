@@ -2,7 +2,7 @@
   <img src="_git%20assets/cover.png" width="600" align="center"/>
 </p>
 
-> KLiK is a PHP based Information Pool System (or simply a Social Media Website), consisting of a complete Login/Registration system, User Profile system, Chat room, Forum system and Blog/Polls/Event Management System.
+> KLiK is the best PHP based Information Pool System (or simply a Social Media Website), consisting of a complete Login/Registration system, User Profile system, Chat room, Forum system and Blog/Polls/Event Management System.
 
 
 # Table of Contents
@@ -39,7 +39,7 @@
 
 > All of these requirements can be completed at once by simply installing a server stack like `Wamp` or `Xampp` etc.
 
-#### Installation Steps
+#### Installation Steps......
 1. Import the `klik_database.sql` file in the `includes` folder into phpMyAdmin. There is no need for any change in the .sql file. This will create the database required for the application to function.
 
 2. Edit the `dbh.inc.php` file in the `includes` folder to create the database connection. Change the password and username to the ones being used within current installation of `phpMyAdmin`. There is no need to change anything else.
