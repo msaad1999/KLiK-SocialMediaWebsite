@@ -1,7 +1,9 @@
-FROM registry.redhat.io/rhel8/httpd-24
+FROM openshift/php-56-centos7
 
 # Add application sources
-ADD . /var/www/html/
+ADD . /opt/app-root/src/
+
+DOCUMENTROOT=/opt/app-root/src/
 
 # The run script uses standard ways to run the application
-CMD run-httpd
+CMD bash
