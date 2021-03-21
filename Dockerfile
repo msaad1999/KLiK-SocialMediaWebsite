@@ -1,4 +1,4 @@
-FROM openshift/php-56-centos7
+FROM registry.redhat.io/rhscl/php-56-rhel7 
 
 # Add application sources
 ADD . /opt/app-root/src/
