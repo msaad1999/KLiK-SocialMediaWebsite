@@ -534,9 +534,9 @@
     {
       "name": "PHP_VERSION",
       "displayName": "PHP Version",
-      "description": "Version of PHP image to be used (7.3-ubi7, 7.3-ubi8, or latest).",
+      "description": "Version of PHP image to be used (7.3-ubi7, 7.3-ubi8, (i added 7-fpm-alpine....) or latest).",
       "required": true,
-      "value": "7.3-ubi7"
+      "value": "7-fpm-alpine"
     },
     {
       "name": "MYSQL_VERSION",
