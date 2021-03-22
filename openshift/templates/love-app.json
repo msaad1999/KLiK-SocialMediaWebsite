@@ -180,6 +180,14 @@
             }
           },
           "spec": {
+            "volumes": [
+              {
+                "name": "${DATABASE_SERVICE_NAME}-data",
+                "persistentVolumeClaim": {
+                  "claimName": "${DATABASE_SERVICE_NAME}"
+                }
+              }
+            ],
             "containers": [
               {
                 "name": "mysql",
@@ -307,7 +315,7 @@
                     "name": "OPCACHE_REVALIDATE_FREQ",
                     "value": "${OPCACHE_REVALIDATE_FREQ}"
                   }
-                ],
+                ]
               }
             ]
           }
@@ -443,7 +451,7 @@
       "name": "DATABASE_USER",
       "displayName": "Database User",
       "required": true,
-      "value": "cakephp"
+      "value": "klikuser"
     },
     {
       "name": "DATABASE_PASSWORD",
