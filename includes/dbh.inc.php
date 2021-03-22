@@ -1,6 +1,6 @@
 <?php
 
-$serverName = $_ENV["MYSQL_HOSTNAME"]; //mydb.local
+$serverName = $_ENV["DATABASE_SERVICE_NAME"]; //mydb.local
 $dBUsername = $_ENV["DATABASE_USER"]; //root
 $dBPassword = $_ENV["DATABASE_PASSWORD"]; //"eldererajinMenji99";
 $dBName = "klik_database"; //klik_database
